@@ -1,0 +1,27 @@
+.nav-link {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.sidebar {
+	width: fit-content;
+	margin-top: -50px;
+	padding-top: 50px;
+    min-height: 100vh;
+    height: 100%;
+}
+
+.nav-pills {
+    color: brown;
+    
+}
+.nav-pills> .nav-item> .nav-link {
+    color: #ffffff;
+}
+.nav-pills> .nav-item:hover {
+    background-color: #006eff52;
+}
+.nav-pills>.active {
+    color: brown;
+
+}

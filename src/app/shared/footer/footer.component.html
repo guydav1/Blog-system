@@ -1,0 +1,67 @@
+<footer class="container-fluid px-5">
+
+    <!-- SEARCH --- SOCIAL ICONS -->
+    <div class="row d-flex align-items-center">
+        <div class="col-2">
+            <img src="assets/img/logo.png" alt="" class="logo">
+        </div>
+        <div class="col-2">
+            <form #seach="ngForm">
+                <div class="input-group">
+                    <input type="text" name="searchQuery" class="form-control" placeholder="Search Posts">
+                    <button type="submit" class="btn btn-warning">Search</button>
+                </div>
+            </form>
+        </div>
+
+        <div class=" ms-5 col-auto d-flex justify-content-between ">
+            <a href="{{s.url}}" target="_blank" class="social" *ngFor="let s of social" ngbTooltip="{{s.name}}" placement="top">
+                <span class="fa-stack fa-lg" >
+                    <i class="fa fa-square fa-stack-2x text-dark"></i>
+                    <i class="{{s.icon}} fa-stack-1x"></i>
+                </span>
+            </a>
+        </div>
+    </div>
+    <hr>
+
+
+    <div class="row">
+        <div class="col-2">
+            <h6>Soluta quo quis</h6>
+            Possimus omnis cum fuga reprehenderit. <br> Assumenda eligendi placeat aut consequatur enim sit.
+            Praesentium
+            voluptate earum quia nam veritatis rem ullam dolorem. Omnis aliquam qui
+
+        </div>
+        <div class="offset-1 col-3 url">
+            <h6>Heading 2</h6>
+
+            <a href="#">Link 1</a>
+            <a href="#">Link 2</a>
+            <a href="#">Link 3</a>
+            <a href="#">Link 4</a>
+            <a href="#">Link 5</a>
+            <a href="#">Link 6</a>
+
+        </div>
+        <div class="col-3 url">
+            <h6>Heading 3</h6>
+
+            <a href="#">Link 1</a>
+            <a href="#">Link 2</a>
+            <a href="#">Link 3</a>
+            <a href="#">Link 4</a>
+            <a href="#">Link 5</a>
+            <a href="#">Link 6</a>
+
+        </div>
+
+
+    </div>
+    <hr>
+    <div class="copyright pb-1">
+        Created by Elad and <a href="http://guydav.com" style="color: inherit; text-decoration: underline;">GuyDav</a>.
+    </div>
+
+</footer>

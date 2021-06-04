@@ -1,0 +1,87 @@
+<h3>Edit Post</h3>
+<div class="row" *ngIf="post">
+    <div class="col-12 my-4">
+        <form (ngSubmit)="onSubmit(editPostForm)" #editPostForm="ngForm">
+
+            <div class="form-group">
+                <label for="id">ID: </label>
+
+                <input type="text" contenteditable="false" id="id" class="form-control" value="{{post._id}}" readonly>
+            </div>
+
+            <div class="form-group">
+                <label for="author">Author: </label>
+                <input type="text" id="author" class="form-control" name="author" [(ngModel)]="post.author" disabled>
+            </div>
+
+            <div class="form-group">
+                <label for="title">Title: </label>
+                <input type="text" id="title" class="form-control" name="title" [(ngModel)]="post.title"
+                    #titleInput="ngModel" required>
+                <div class="form-text text-danger my-2"
+                    *ngIf="titleInput.invalid && (titleInput.touched || titleInput.dirty)">Required</div>
+            </div>
+
+            <div class="form-group">
+                <label for="tags">Tags (seprated by ','): </label>
+
+                <input type="text" id="tags" class="form-control" name="tags" #tagsInput="ngModel"
+                    [(ngModel)]="post.tags" required>
+                <div class="form-text text-danger" *ngIf="tagsInput.invalid && (tagsInput.touched || tagsInput.dirty)">
+                    Required</div>
+            </div>
+
+            <div class="form-group">
+                <label for="image">Image URL(optional): </label>
+                <input type="text" id="imageURL" class="form-control" name="imageURL" [(ngModel)]="post.imageURL">
+            </div>
+
+            <div class="form-group">
+                <label for="description">Desc: </label>
+                <editor [init]="{
+                    base_url: '/tinymce', 
+                    suffix: '.min',  
+                     height: 300,
+                     menubar: false,
+                     plugins: [
+                     'advlist autolink lists link image charmap print preview anchor',
+                     'searchreplace visualblocks code fullscreen',
+                     'insertdatetime wordcount paste'
+                   ],
+                   paste_as_text: true,
+                   toolbar: 'insertfile undo redo | bold italic forecolor | fontsizeselect | bullist numlist'
+                   }" name="description" [(ngModel)]="post.description" #descInput="ngModel" required></editor>
+                <!-- <textarea id="description" [(ngModel)]="post.description" class="form-control" name="description"
+                    #descInput="ngModel" required>{{post.description}}</textarea> -->
+                <div class="form-text text-danger" *ngIf="descInput.invalid && (descInput.touched || descInput.dirty)">
+                    Required</div>
+            </div>
+
+            <div class="form-group">
+                <label for="text">Text: </label>
+                <editor [init]="{
+                    base_url: '/tinymce', 
+                    suffix: '.min',     
+                     height: 500,
+                     menubar: false,
+                     plugins: [
+                     'advlist autolink lists link image charmap print preview anchor',
+                     'searchreplace visualblocks code fullscreen',
+                     'insertdatetime media table paste imagetools wordcount'
+                   ],
+                   toolbar: 'insertfile undo redo | styleselect | bold italic forecolor backcolor | fontselect fontsizeselect | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image'
+                   }" [(ngModel)]="post.body" name="body" #bodyInput="ngModel" required></editor>
+                <!-- <textarea id="text" class="form-control" [(ngModel)]="post.body" name="body" #bodyInput="ngModel"
+                    required>{{post.body}}</textarea> -->
+                <div class="form-text text-danger" *ngIf="bodyInput.invalid && (bodyInput.touched || bodyInput.dirty)">
+                    Required</div>
+
+            </div>
+            <button class="btn btn-outline-success my-4" type="submit" [disabled]="submit || editPostForm.form.invalid">
+                Submit
+            </button>
+        </form>
+        {{errorMessage}}
+        {{successMessage}}
+    </div>
+</div>

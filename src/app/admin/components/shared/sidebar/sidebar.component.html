@@ -1,0 +1,55 @@
+<div class="d-flex flex-column flex-shrink-0 bg-dark h-100 sidebar">
+
+
+    <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
+        <li class="nav-item">
+            <a routerLink="./" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+                class="nav-link py-3 border-bottom">
+                <i class="fa fa-2x fa-windows"></i>
+                <div>DashBoard</div>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a routerLink="./stats" routerLinkActive="active" class="nav-link py-3 border-bottom">
+                <i class="fa fa-2x fa-bar-chart"></i>
+                <div>Statistics</div>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a routerLink="./posts" routerLinkActive="active" class="nav-link py-3 border-bottom">
+                <i class="fa fa-2x fa-files-o"></i>
+                <div>Posts</div>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a routerLink="./add-post" routerLinkActive="active" class="nav-link py-3 border-bottom">
+                <i class="fa fa-2x fa-pencil"></i>
+                <div>Add Post</div>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a routerLink="./comments" routerLinkActive="active" class="nav-link py-3 border-bottom">
+                <i class="fa fa-2x fa-comment"></i>
+                <div>Comments</div>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a routerLink="./users" routerLinkActive="active" class="nav-link py-3 border-bottom">
+                <i class="fa fa-2x fa-user"></i>
+                <div>Users</div>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a routerLink="./settings" routerLinkActive="active" class="nav-link py-3 border-bottom">
+                <i class="fa fa-2x fa-gear"></i>
+                <div>Settings</div>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a routerLink="./logout" (click)="logout()"  class="nav-link py-3 border-bottom"><i class="fa fa-2x fa-sign-out"></i>
+                <div>Logout</div>
+            </a>
+        </li>
+    </ul>
+
+</div>

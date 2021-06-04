@@ -1,0 +1,46 @@
+.navbar {
+	height: 70px;
+}
+
+.nav-item :hover {
+	color: rgb(204, 167, 4);
+}
+
+.nav-item {
+	display: block;
+	position: relative;
+	margin: 0 10px;
+	text-transform: lowercase;
+	line-height: 70px;
+}
+
+.nav-link {
+	height: 100%;
+	padding: 0;
+}
+
+.nav-item::first-letter {
+	text-transform: uppercase;
+}
+
+.nav-item > .active::after,
+.nav-item ::after {
+	content: "";
+	width: 0%;
+}
+.nav-item > .active::after,
+.nav-item :hover::after {
+	content: "";
+	position: absolute;
+	display: block;
+	margin: auto;
+	/* top: 100%; */
+	bottom: 0;
+	left: 0;
+	right: 0;
+	width: 100%;
+	height: 3px;
+	background-color: rgb(124, 160, 228);
+	transition: 0.7s ease;
+	-webkit-transition: 0.7s ease;
+}

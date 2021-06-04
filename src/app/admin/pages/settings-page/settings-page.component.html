@@ -1,0 +1,42 @@
+<!-- General text -->
+<div class="my-3">
+    <h3><u>General settings</u></h3>
+</div>
+<label for="defaultImageUrl">Default image URL:</label>
+<div class="input-group">
+    <input type="text" name="url" class="form-control" placeholder="URL" [(ngModel)]="defaultImageUrl" #imgurl="ngModel"
+        ngbTooltip="default image url when post has no image" required>
+
+    <button class="btn btn-outline-success" (click)="handleImageSave()">Save</button>
+
+</div>
+<div class="form-text text-danger" *ngIf="imgurl.invalid && imgurl.dirty">Required</div>
+
+<!-- sperator text -->
+<div class="my-3">
+    <h3><u>SideBar settings</u></h3>
+</div>
+
+<hr>
+<!-- Side Bar settings -->
+<label for="SBImageUrl">Image URL:</label>
+<div class="input-group">
+    <input id= "SBImageUrl" type="text" name="sidebarUrl" class="form-control" placeholder="URL" [(ngModel)]="sideBar.imageUrl"
+        #sbimgurl="ngModel" ngbTooltip="image for the sideBar" required>
+</div>
+<div class="form-text text-danger" *ngIf="sbimgurl.invalid && sbimgurl.dirty">Required</div>
+
+<label for="about">About:</label>
+<div class="input-group">
+    <input  id="about" type="text" name="about" class="form-control" placeholder="about" [(ngModel)]="sideBar.about"
+        #sbabout="ngModel"  ngbTooltip="info about you or the blog" required>
+</div>
+ <div class="form-text text-danger" *ngIf="sbabout.invalid && sbabout.dirty">Required</div>
+
+    <div class="my-3">
+        <button class="btn btn-outline-success" (click)="handleSideBarSave()">Save</button>
+    </div>
+<hr>
+<!-- social settings -->
+<app-social></app-social>
+<hr>

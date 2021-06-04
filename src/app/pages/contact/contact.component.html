@@ -1,0 +1,61 @@
+<div class="container my-4" style="min-height: 75vh;">
+
+    <div class="row">
+        <div class="col-md-8 mx-auto contact text-center my-4">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTt6QRFMFLjuGFUNpdACrSqvONw685THQL-Dg&usqp=CAU"
+                alt="Contact Us">
+            <hr>
+            <form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)">
+                <div class="row my-4">
+                    <!-- name input-->
+                    <div class="col-auto">
+                        <label class="col-form-label" for="name">Name: *</label>
+                    </div>
+                    <div class="col">
+                        <input type="text" [(ngModel)]="name" class="form-control" name="name" id="name"
+                            placeholder="Your Name" required>
+                    </div>
+                    <!-- mail input -->
+                    <div class="col-auto">
+                        <label class="col-form-label" for="mail">Mail: *</label>
+                    </div>
+                    <div class="col">
+                        <input type="email" [(ngModel)]="mail" class="form-control" name="mail" id="mail"
+                            placeholder="Your mail" required>
+                    </div>
+                </div>
+                <div class="row mb-3 my-3">
+                    <!-- msg input -->
+                    <label class="col-auto" for="text">Message: *</label>
+                    <textarea name="text" id="text" class="form-control" [(ngModel)]="text" placeholder="Your msg"
+                        rows="10"></textarea>
+                </div>
+                <!-- submit button -->
+                <button type="submit" class="btn btn-outline-success"
+                    [disabled]="submitted || contactForm.invalid">Send</button>
+            </form>
+            <!-- <div id="submitMessage" style="font-weight: bold;"></div> -->
+            <div *ngIf="errorMessage" class="text-danger">
+                {{errorMessage}}
+            </div>
+            <div *ngIf="successMessage" class="text-success">
+                {{successMessage}}
+            </div>
+        </div>
+    </div>
+    <hr class="seperator">
+    <div class="row text-center justify-content-center rounded-1 align-items-center">
+        <div class="col-4">
+            <i class="fa fa-info-circle fa-5x"></i> <br>
+            Jordan Nienow. <br>
+            0535 Lorencia Bar, 72836-2050, Webzen. <br>
+            936.452.8625
+        </div>
+        <div class="offset-1 col-4 p-5">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d17699372.554877065!2d53.437500000000085!3d-74.2904923730443!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa4b9967b3390754b%3A0x6e52be1f740f2075!2z15DXoNeY16jXmNeZ16fXlA!5e0!3m2!1siw!2sil!4v1620919861735!5m2!1siw!2sil"
+                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+
+        </div>
+    </div>
+</div>

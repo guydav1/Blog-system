@@ -1,0 +1,10 @@
+/* You can add global styles to this file, and also import other style files */
+.seperator {
+	background-color: transparent;
+	margin: 5px auto;
+	padding: 5px 0;
+	border-top: 1px dashed rgb(0, 0, 0) !important;
+	width: 95%;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

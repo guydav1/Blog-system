@@ -1,0 +1,20 @@
+<div class="container-fluid border rounded pt-3 px-0">
+
+    <div class="about p-2 d-flex flex-column align-items-center" *ngIf="(configService.configObservable | async )?.sideBar as config">
+        <img src="{{config.imageUrl}}"
+            alt="" class="about-img rounded-circle img-fluid mb-2">
+            <div class="text-break">
+                            {{config.about}}
+            </div>
+    </div>
+
+    <div class="tags border p-3">
+        <h6>Popular Tags:</h6>
+        <span *ngFor="let tag of postService.tags | async |slice:0:5">
+            <a class="text-muted text-decoration-none text-break" [style.font-size]="(tag.count * 0.1) % 1 + 0.9 + 'rem'"
+                routerLink="/search/tags/{{tag._id}}">
+                {{tag._id}}&nbsp;
+            </a>
+        </span>
+    </div>
+</div>

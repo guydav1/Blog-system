@@ -1,0 +1,11 @@
+<div *ngIf="comment">
+
+    <div class="title pt-3">
+
+        <h5>{{index}}. {{comment.author}}</h5>
+    </div>
+    <div class="card-body">
+        <p class="text-wrap">{{comment.body}}</p>
+        <p>Posted on: {{comment.date | date:"dd/MM/YYYY HH:mm "}}</p>
+    </div>
+</div>

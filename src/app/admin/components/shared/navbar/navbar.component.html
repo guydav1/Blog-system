@@ -1,0 +1,24 @@
+<nav class="navbar sticky-top navbar-light bg-light">
+  <div class="container-fluid ps-5">
+    <span class="navbar-brand">Admin Panel</span>
+    <div class="ms-auto">
+      <a href="/">
+        Go to blog
+      </a>
+    </div>
+    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+      <li class="nav-item dropdown">
+        Hello <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+          {{username}}
+        </a>
+        <ul class="dropdown-menu" style="position: absolute; left:auto; right:0">
+
+          <li><a class="dropdown-item" (click)="logout()">Logout</a></li>
+        </ul>
+      </li>
+    </ul>
+
+
+  </div>
+</nav>

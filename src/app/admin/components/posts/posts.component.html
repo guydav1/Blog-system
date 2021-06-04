@@ -1,0 +1,74 @@
+<div *ngIf="posts">
+    <a routerLink="../add-post" class="btn btn-outline-secondary" style="position: absolute; top: 5px; right: 5px;">New
+        Post</a>
+    <div *ngIf="!posts && !error && loaded">
+        Nothing has been posted, maybe try to make a <a routerLink="./add-post">new post</a>.
+    </div>
+    <input type="text" name="search" (ngModelChange)="applySearch($event)" placeholder="Search..." class="form-control"
+        [(ngModel)]="searchQuery">
+    <div class="table-responsive">
+        <table class="table table-hover table-bordered mt-3">
+            <thead>
+                <tr>
+                    <th (click)="handleSort('title')">
+                        Title
+                        <i *ngIf="sortValue == 'title'" class="fa"
+                            [class]="sortOrder == 'asc' ? 'fa-sort-asc':'fa-sort-desc'"></i>
+                    </th>
+                    <th (click)="handleSort('author')">Author
+                        <i *ngIf="sortValue == 'author'" class="fa"
+                            [class]="sortOrder == 'asc' ? 'fa-sort-asc':'fa-sort-desc'"></i>
+
+                    </th>
+                    <th (click)="handleSort('comments')">#Comments
+                        <i *ngIf="sortValue == 'comments'" class="fa"
+                            [class]="sortOrder == 'asc' ? 'fa-sort-asc':'fa-sort-desc'"></i>
+                    </th>
+                    <th (click)="handleSort('date')">Creation Date
+                        <i *ngIf="sortValue == 'date'" class="fa"
+                            [class]="sortOrder == 'asc' ? 'fa-sort-asc':'fa-sort-desc'"></i>
+                    </th>
+                    <th (click)="handleSort('publishDate')">
+                        Publish Date
+                        <i *ngIf="sortValue == 'publishDate'" class="fa"
+                            [class]="sortOrder == 'asc' ? 'fa-sort-asc':'fa-sort-desc'"></i>
+                    </th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr
+                    *ngFor="let post of posts |filter:searchQuery:'title'| sort:sortValue:sortOrder| slice:pageIndex * pageSize:pageIndex*pageSize+pageSize; index as i;">
+                    <td style="min-width: 50%; width: 50%;">{{post.title}}</td>
+                    <td style="width: 10%; min-width: 10%; max-width: 10%;">{{post.author}}</td>
+                    <td style="width: 8%;">{{post.comments.length}}</td>
+                    <td>{{post.date | date:'dd/MM/YYYY, HH:mm'}}</td>
+                    <td>{{post.isPublished ? (post.publishDate | date:'dd/MM/YYYY, HH:mm') : 'Not published'}}</td>
+                    <td class="text-center d-flex justify-content-around">
+                        <button class="actionButton" type="button" (click)="handleDelete(post)"><i class="fa fa-trash"
+                                ngbTooltip="Delete"></i></button>
+                        <button class="actionButton" type="button" (click)="handleEdit(post)"><i class="fa fa-pencil"
+                                ngbTooltip="Edit"></i></button>
+                        <button class="actionButton" type="button"><i (click)="handleLock(post)" class="fa"
+                                [ngClass]="post.isLocked ? 'fa-unlock' : 'fa-lock'"
+                                [ngbTooltip]="post.isLocked? 'Unlock post': 'Lock post'"></i></button>
+                        <button class="actionButton" type="button"><i (click)="handlePublish(post)" class="fa"
+                                [ngClass]="post.isPublished ? 'fa-eye-slash' : 'fa-eye'"
+                                [ngbTooltip]="post.isPublished? 'Hide post': 'Publish post'"></i></button>
+
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <mat-paginator [length]="(posts |filter:searchQuery:'title').length" [pageSize]="pageSize"
+            [pageSizeOptions]="[5, 10, 25, 100]" (page)="page($event)" [showFirstLastButtons]="true">
+        </mat-paginator>
+
+    </div>
+
+    <ngb-toast *ngIf="deleted" (hide)="deleted = false" [delay]="5000" [autohide]="true"
+        class="bg-success text-light w-50 mx-auto text-center fs-6 toast">
+        Post deleted successfuly =)
+    </ngb-toast>

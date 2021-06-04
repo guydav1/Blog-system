@@ -1,0 +1,91 @@
+<h3>Add Post</h3>
+<div class="row">
+    <div class="col-12 my-4">
+        <form (ngSubmit)="onSubmit(addPostForm)" #addPostForm="ngForm">
+
+            <div class="form-group">
+                <label for="author">Author: </label>
+                <input type="text" id="author" class="form-control" name="author" [(ngModel)]="author" disabled>
+            </div>
+
+            <div class="form-group">
+                <label for="title">Title: </label>
+                <input type="text" id="title" class="form-control" name="title" [(ngModel)]="title"
+                    #titleInput="ngModel" required>
+                <div class="form-text text-danger my-2"
+                    *ngIf="titleInput.invalid && (titleInput.touched || titleInput.dirty)">Required</div>
+            </div>
+
+            <div class="form-group">
+                <label for="tags">Tags (Seperated by comma ( , ) ): </label>
+
+                <input type="text" id="tags" class="form-control" name="tags"
+                    (input)="tagsListener($event, tagsInput.value)" ngModel #tagsInput="ngModel" required>
+                <div class="form-text text-danger" *ngIf="tagsInput.invalid && (tagsInput.touched || tagsInput.dirty)">
+                    Required</div>
+
+            </div>
+
+            <div class="form-group">
+                <label for="image">Image URL(optional): </label>
+                <input type="text" id="imageURL" class="form-control" name="imageURL" [(ngModel)]="imageURL">
+            </div>
+
+            <div class="form-group">
+                <label for="allowComments">Allow Comments? </label>
+                <input type="checkbox" id="allowComments" class="mx-4 form-check-inline" name="allowComments"
+                    [(ngModel)]="allowComments">
+            </div>
+            <div class="form-group">
+                <label for="publish">Publish Post?</label>
+                <input type="checkbox" id="publish" class="mx-4 form-check-inline" name="publish" [(ngModel)]="publish">
+            </div>
+
+            <div class="form-group">
+                <label for="description">Desc: </label>
+                <editor [init]="{
+                    base_url: '/tinymce', 
+                    suffix: '.min',  
+                     height: 300,
+                     menubar: false,
+                     plugins: [
+                     'advlist autolink lists link image charmap print preview anchor',
+                     'searchreplace visualblocks code fullscreen',
+                     'insertdatetime wordcount paste'
+                   ],
+                   paste_as_text: true,
+                   toolbar: 'insertfile undo redo | bold italic forecolor | fontsizeselect | bullist numlist'
+                   }" name="description" [(ngModel)]="description" #descInput="ngModel" required></editor>
+                <div class="form-text text-danger" *ngIf="descInput.invalid && (descInput.touched || descInput.dirty)">
+                    Required</div>
+
+            </div>
+
+            <div class="form-group">
+                <label for="text">Text: </label>
+                <editor [init]="{
+                    base_url: '/tinymce', 
+                    suffix: '.min',     
+                     height: 500,
+                     menubar: false,
+                     plugins: [
+                     'advlist autolink lists link image charmap print preview anchor',
+                     'searchreplace visualblocks code fullscreen',
+                     'insertdatetime media table paste imagetools wordcount'
+                   ],
+                   toolbar: 'insertfile undo redo | styleselect | bold italic forecolor backcolor | fontselect fontsizeselect | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image'
+                   }" [(ngModel)]="text" name="text" #textInput="ngModel" required></editor>
+                <div class="form-text text-danger" *ngIf="textInput.invalid && (textInput.touched || textInput.dirty)">
+                    Required</div>
+
+            </div>
+
+            <button class="btn btn-outline-success my-4" type="submit"
+                [disabled]="submitted || addPostForm.form.invalid">
+                Submit
+            </button>
+        </form>
+        {{successMessage}}
+        {{errorMessage}}
+    </div>
+</div>

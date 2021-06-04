@@ -1,0 +1,96 @@
+<div *ngIf="error">
+    Nothing has been found.
+</div>
+<div class="row g-5">
+    <div class="table-responsive" *ngIf="!error">
+        <div class="d-flex justify-content-start align-center">
+            <input #search type="text" name="search" (keyup)="keyUp(search.value)" placeholder="Search..."
+                class="form-control w-25" [(ngModel)]="searchQuery">
+            <i *ngIf="searching" class="ms-2 fa fa-spinner fa-spin fa-2x fa-fw"></i>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>User</th>
+                        <th>Date</th>
+                        <th>Role</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of users">
+
+                        <td style="max-width: 30%; width: 30%;">
+                            <div *ngIf="user._id == chosenUserEdit?._id else n" class="input-group">
+                                <input class="form-control" [(ngModel)]='chosenUserEdit!.username' name="username" #input
+                                    required>
+                            </div>
+
+
+                            <ng-template #n>
+                                {{user.username}}
+                            </ng-template>
+                        </td>
+
+                        <!-- <td style="max-width: 30%; width: 30%;">{{user.username}}</td> -->
+                        <td>{{user.createdAt | date:'YYYY/MM/dd HH:mm'}}</td>
+                        <!-- <td>{{user.role}}</td> -->
+
+                        <td>
+                            <div *ngIf="user._id == chosenUserEdit?._id  else x" class="input-group">
+                                <select name="roles" id="roles" [(ngModel)]='chosenUserEdit!.role'>
+                                    <option value="admin">admin</option>
+                                    <option value="user">user</option>
+                                </select>
+                            </div>
+                            <ng-template #x>
+                                {{user.role}}
+                            </ng-template>
+                        </td>
+
+                        <td class="action">
+
+                            <div *ngIf="user._id == chosenUserEdit?._id else regularMode" class="input-group">
+                                <button class="btn btn-primary btn-sm px-3"
+                                    (click)="handleEditSubmit()">Edit</button>
+                                <button class="btn btn-outline-danger btn-sm" (click)="chosenUserEdit = undefined"
+                                    ngbTooltip="Cancel"><i class="fa fa-times"></i></button>
+                            </div>
+
+                            <ng-template #regularMode>
+                                <button class="actionButton" type="button" (click)="handleEdit(user)">
+                                    <i class="fa fa-pencil" ngbTooltip="edit Role/Username"></i>
+                                </button>
+                                <button class="actionButton" type="button" (click)="deleteUser(user)">
+                                    <i class="fa fa-trash" ngbTooltip="Delete"></i>
+                                </button>
+                            </ng-template>
+
+                            <!-- <button class="actionButton" type="button" (click)="handleEdit(user)">
+                                <i class="fa fa-pencil" ngbTooltip="edit Role/Username"></i>
+                            </button>
+                            <button class="actionButton" type="button" (click)="deleteUser(user)">
+                                <i class="fa fa-trash" ngbTooltip="Edit"></i>
+                            </button> -->
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <mat-paginator [length]="totalUsers" [pageSize]="pageSize" [pageIndex]="pageIndex"
+            [pageSizeOptions]="[5, 10, 25, 100]" (page)="page($event)" [showFirstLastButtons]="true"
+            [disabled]="!loaded">
+        </mat-paginator>
+    </div>
+
+
+</div>
+<ngb-toast *ngIf="deleted" (hide)="deleted = false" [delay]="5000" [autohide]="true"
+    class="bg-success text-light w-50 mx-auto text-center fs-6 toast">
+    user deleted successfuly =)
+</ngb-toast>
+<ngb-toast *ngIf="edited" (hide)="edited = false" [delay]="5000" [autohide]="true"
+    class="bg-success text-light w-50 mx-auto text-center fs-6 toast">
+    user edited successfuly =)
+</ngb-toast>

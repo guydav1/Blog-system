@@ -1,0 +1,19 @@
+<ng-container *ngIf="posts">
+
+    <div *ngFor="let post of posts, index as i" class="my-3">
+        <h3 class="title"> <a routerLink="/post/{{post._id}}">{{post.title}}</a> </h3>
+        <div class="my-2 text-muted fst-italic">Posted By: {{post.author}} | {{post.date | date}} | Comments ({{post.totalComments}}) </div>
+        <a routerLink="/post/{{post._id}}">
+            <img #image  (error)="image.src = defaultImageUrl!" src="{{post.imageURL || defaultImageUrl}}"
+                class="rounded image">
+        </a>
+        <div class="card-body" [innerHtml]="post.description | safe: 'html'"></div>
+        <a routerLink="/post/{{post._id}}" class="text-reset fw-bold fst-italic">Read More <i class="fa fa-caret-right"></i></a>
+        <hr class="seperator mt-5">
+    </div>
+
+    <div class="text-center">
+        <a routerLink="/posts" class="text-reset fw-bold">More Posts</a>
+    </div>
+
+</ng-container>

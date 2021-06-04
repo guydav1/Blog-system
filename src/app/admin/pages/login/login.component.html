@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="card shadow-lg rounded-0 mx-auto" style="width: 22rem;">
+        <h1 class="card-header text-center bg-white">
+            Login
+        </h1>
+        <div class="card-body w-auto mx-auto">
+            <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+                <label for="username" class="form-text">Username: </label>
+                <input type="text" name="username" id="username" [(ngModel)]="username" class="form-control rounded-0"
+                [maxLength]="20" required>
+                
+                
+                <label for="password" class="form-text">Password: </label>
+                <input [maxLength]="20" type="password" id="password" class="form-control rounded-0"
+                name="password" [(ngModel)]="password" required>
+                
+                <div class="my-2 ms-1 form-text"><a routerLink="/your-bad">Forgot Password?</a></div>
+                <div class="d-grid gap-2 mx-auto">
+                    <button class="btn btn-success my-4 " type="submit" [disabled]="loginForm.invalid">Login</button>
+                </div>
+                
+                {{message}}
+            </form>
+        </div>
+    </div>
+</div>

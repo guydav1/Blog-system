@@ -1,0 +1,55 @@
+footer {
+	background-color: #000000;
+	color: rgb(255, 255, 255);
+}
+
+hr {
+	opacity: 0.1;
+}
+
+input {
+	background-color: rgba(255, 255, 255, 0.2);
+	border: none;
+	border-radius: 0;
+	color: white;
+}
+
+input:focus {
+	background-color: rgba(255, 255, 255, 0.2);
+	color: white;
+
+	border-radius: 0;
+	border: none;
+	outline: none;
+	box-shadow: none;
+}
+
+.social {
+	color: rgb(255, 255, 255);
+	text-decoration: none;
+	margin: 0 10px;
+}
+.social:hover {
+	color: gray;
+}
+
+.logo {
+	filter: grayscale(100%);
+	opacity: 0.7;
+}
+
+.copyright {
+	font-size: 0.8rem;
+	letter-spacing: 2px;
+	color: #999;
+}
+
+.url a {
+	display: block;
+	text-decoration: none;
+	color: #999;
+	padding-inline-start: 6px;
+}
+.url a:hover {
+	color: #CCC;
+}

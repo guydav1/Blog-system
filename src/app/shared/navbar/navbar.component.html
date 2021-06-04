@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark py-0">
+  <div class="container-fluid h-100">
+    <a class="navbar-brand" href="#"><img src="assets/img/logo-horizontal.png" alt=""></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse  h-100" id="navbarSupportedContent">
+
+      <ul class="navbar-nav ms-auto h-100 px-5">
+        <li class="nav-item">
+          <a routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-link" routerLink="">Home</a>
+        </li>
+        <li class="nav-item">
+          <a routerLinkActive="active" class="nav-link" routerLink="/posts">POSTS</a>
+        </li>
+        <li class="nav-item">
+          <a routerLinkActive="active" class="nav-link" routerLink="/contact">CONTACT</a>
+        </li>
+        <li class="nav-item">
+          <a routerLinkActive="active" class="nav-link" routerLink="/about">ABOUT</a>
+        </li>
+      </ul>
+      <div>
+        <form class="d-flex" #searchForm="ngForm" (ngSubmit)="onSubmit(searchForm)">
+          <input class="form-control me-2" [(ngModel)]="searchInput" name="searchInput" type="search"
+            placeholder="Search" aria-label="Search" required minlength="1">
+        </form>
+      </div>
+    </div>
+  </div>
+</nav>
