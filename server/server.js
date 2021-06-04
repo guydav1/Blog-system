@@ -21,10 +21,6 @@ app.use('/api/email', emailRoute)
 app.use('/api/user', userRoute)
 app.use('/api/posts', postsRoute)
 app.use('/api/config', configRoute)
-app.use('/', express.static('dist/Blog-System'))
-app.all('*', function (req, res) {
-    res.status(200).sendFile(`/`, {root: 'dist/Blog-System'});
-});
 
 
 // start the Express server
