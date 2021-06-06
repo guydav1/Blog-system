@@ -1,4 +1,7 @@
-Showing results for __ :
+Showing results for {{searchString}}:
 <div *ngIf="posts">
-    <app-posts [posts]="posts" [totalPosts]="totalPosts" [hidePageSize] ="true" [fetchFunction]="search"></app-posts>
+    <app-posts [posts]="posts" [totalPosts]="totalPosts" [hidePageSize]="true" [fetchFunction]="search"></app-posts>
+</div>
+<div *ngIf="!posts && isLoaded">
+    No results.
 </div>

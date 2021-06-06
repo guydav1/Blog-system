@@ -26,7 +26,6 @@ export class AddCommentComponent implements OnInit {
 		this.id = this.route.snapshot.paramMap.get("id");
 	}
 
-	log(t:any) {console.log(t);}
 
 	onSubmit(f: NgForm) {
 		if (this.id && this.author && this.body) {

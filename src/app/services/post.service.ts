@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Subject, throwError } from "rxjs";
+import { ReplaySubject, Subject, throwError } from "rxjs";
 import { catchError, retry } from "rxjs/operators";
 import { environment } from "src/environments/environment";
 import { Comment } from "./comment.service";
@@ -34,7 +34,7 @@ export interface Response {
 	providedIn: "root",
 })
 export class PostService {
-	tags: Subject<Tag[]> = new Subject();
+	tags: ReplaySubject<Tag[]> = new ReplaySubject(1);
 	constructor(private http: HttpClient) {
 		this.getTags();
 	}

@@ -25,13 +25,11 @@ export class PostComponent implements OnInit {
 
 	fetchPost(id: string) {
 		this.postService.getPost(id).subscribe(post => {
-			console.log(post);
 			this.post = post;
 		});
 	}
 
 	updateComments(e: Array<Comment>) {
-		console.log(e);
 		if (this.post) {
 			this.post.comments = e;
 		}

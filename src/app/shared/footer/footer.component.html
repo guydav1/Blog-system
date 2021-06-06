@@ -6,9 +6,9 @@
             <img src="assets/img/logo.png" alt="" class="logo">
         </div>
         <div class="col-2">
-            <form #seach="ngForm">
+            <form #seach="ngForm" (ngSubmit)="search()">
                 <div class="input-group">
-                    <input type="text" name="searchQuery" class="form-control" placeholder="Search Posts">
+                    <input type="text" name="searchQuery" class="form-control" placeholder="Search Posts" [(ngModel)]="searchInput">
                     <button type="submit" class="btn btn-warning">Search</button>
                 </div>
             </form>
