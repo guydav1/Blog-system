@@ -42,13 +42,11 @@ export class EditPostComponent implements OnInit {
 	}
 
 	onSubmit(f: NgForm) {
-		console.log(this.post);
 		if (this.post && this.post.title && this.post.body && this.post.tags && this.post.description) {
 			this.submit = true;
 			this.post.tags = this.tagsParser(this.post.tags.toString());
 			this.postService.updatePost(this.post!).subscribe(
 				res => {
-					console.log(res);
 					this.successMessage = "DONE 👍..moving back to posts panel";
 					setTimeout(() => {
 						this.router.navigateByUrl("/admin/posts");

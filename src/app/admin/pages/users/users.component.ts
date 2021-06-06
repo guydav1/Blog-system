@@ -52,7 +52,6 @@ export class UsersComponent implements OnInit, OnDestroy {
 				this.loaded = true;
 				this.error = false;
 				this.searching = false;
-				console.log(users);
 			},
 			err => {
 				console.log(err.statusText);

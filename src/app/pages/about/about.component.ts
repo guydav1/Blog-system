@@ -12,8 +12,5 @@ export class AboutComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  log(t: any) {
-    console.log(t);
-  }
 
 }
