@@ -1,0 +1,54 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark py-0">
+  <div class="container-fluid h-100">
+    <a class="navbar-brand" href="/"><img src="assets/img/logo-light.png" alt=""></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse bg-dark z-index-99" id="navbarSupportedContent">
+
+      <ul class="navbar-nav ms-auto h-100 px-2 text-center">
+        <li class="nav-item">
+          <a routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-link" routerLink="">Home</a>
+        </li>
+        <li class="nav-item">
+          <a routerLinkActive="active" class="nav-link" routerLink="/posts">POSTS</a>
+        </li>
+        <li class="nav-item">
+          <a routerLinkActive="active" class="nav-link" routerLink="/contact">CONTACT</a>
+        </li>
+        <li class="nav-item">
+          <a routerLinkActive="active" class="nav-link" routerLink="/about">ABOUT</a>
+        </li>
+      </ul>
+
+      <li ngbDropdown display="dynamic" class="mx-2 p-4 p-lg-0">
+        <a role="button" ngbDropdownToggle>
+          <img [src]="(loggedUser$ | async)?.profilePicture"
+            (error)="profilePicture.src = 'assets/img/profile.png'" class="rounded-circle border border-2 border-white object-cover"
+            height="40" width="40" #profilePicture>
+
+        </a>
+        <ul ngbDropdownMenu>
+          <div class="p-2">
+            Hello, {{(loggedUser$ | async)?.username || 'Guest'}}
+          </div>
+          <div *ngIf="isLoggedIn; else guestMenu">
+            <a ngbDropdownItem routerLink="/u/{{(loggedUser$ | async)?.username}}"><i
+                class="fa fa-user"></i> Profile</a>
+            <a ngbDropdownItem routerLink="/user/settings"><i class="fa fa-cog"></i> Settings</a>
+            <a ngbDropdownItem routerLink="/admin" *ngIf="(loggedUser$ | async)?.role === 'admin'"><i
+                class="fa fa-wrench"></i> Admin Panel</a>
+            <hr class="dropdown-divider">
+            <button ngbDropdownItem (click)="logout()"><i class="fa fa-sign-out"></i> Log Out</button>
+          </div>
+          <ng-template #guestMenu>
+            <a ngbDropdownItem routerLink="/register"><i class="fa fa-pencil"></i> Register</a>
+            <hr class="dropdown-divider">
+            <a ngbDropdownItem routerLink="/login"><i class="fa fa-sign-in"></i> Login</a>
+          </ng-template>
+        </ul>
+      </li>
+    </div>
+  </div>
+</nav>

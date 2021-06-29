@@ -1,0 +1,14 @@
+<div class="container my-4">
+    <div class="row align-items-center" style="padding: 8rem 0;">
+        <div class="col-md-3">
+            <h1 class="fw-light text-uppercase">ABOUT US</h1>
+        </div>
+        <div class="col-md-4 text-break pre-wrap">{{(about$ | async)?.paragraph1}}
+        </div>
+        <div class="offset-md-1 col-md-4 text-break pre-wrap">{{(about$ | async)?.paragraph2}}
+        </div>
+    </div>
+
+    <img *ngIf="(about$ | async)?.image as image" [src]="image" alt="" class="w-100 object-cover" data-aos="fade-up"
+        height="350">
+</div>

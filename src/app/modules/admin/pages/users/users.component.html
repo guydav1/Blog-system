@@ -1,0 +1,83 @@
+<div class="row">
+    <div class="col-sm-7">
+        <div class="d-flex justify-content-start align-center">
+            <input #search type="text" name="search" (keyup)="keyUp(search.value)" placeholder="Search..."
+                class="form-control" [(ngModel)]="searchQuery">
+            <i *ngIf="searching" class="ms-2 fa fa-spinner fa-spin fa-2x fa-fw"></i>
+        </div>
+        <div *ngIf="error" class="p-3">
+            No Results.
+        </div>
+        <div class="table-responsive" *ngIf="!error">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>User</th>
+                        <th>Email</th>
+                        <th>Created at</th>
+                        <th>Role</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of users">
+
+                        <td style="max-width: 30%; width: 30%;">{{user.username}}</td>
+                        <td>{{user.email}}</td>
+                        <td>{{user.createdAt | date:'YYYY/MM/dd HH:mm'}}</td>
+                        <td>{{user.role}}</td>
+
+                        <td class="action">
+                            <ng-container *ngIf="user.username !== (loggedUser$ | async)?.username">
+                                <button class="actionButton" type="button" (click)="handleEdit(user)">
+                                    <i class="fa fa-pencil" ngbTooltip="Edit"></i>
+                                </button>
+                                <button class="actionButton" type="button" (click)="deleteUser(user)">
+                                    <i class="fa fa-trash" ngbTooltip="Delete"></i>
+                                </button>
+                            </ng-container>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <mat-paginator [length]="totalUsers" [pageSize]="pageSize" [pageIndex]="pageIndex"
+                [pageSizeOptions]="[5, 10, 25, 100]" (page)="page($event)" [showFirstLastButtons]="true"
+                [disabled]="!loaded">
+            </mat-paginator>
+        </div>
+    </div>
+    <div class="offset-sm-1 col-sm-4">
+        <div class="card">
+            <h4 class="card-header text-center"> {{chosenUserId?'Edit User': 'Add User'}}</h4>
+            <form class="card-body" #addForm="ngForm" (ngSubmit)="chosenUserId? handleEditSubmit(): addUser()">
+                <label for="username">Username:</label>
+                <input type="text" name="username" class="form-control" maxlength="10" placeholder="" required
+                    [(ngModel)]="newUser.username">
+                <label for="email">Email:</label>
+                <input type="email" name="email" class="form-control" placeholder="" required
+                    [(ngModel)]="newUser.email">
+                <label for="password">Password:</label>
+                <input type="password" name="password" class="form-control" placeholder=""
+                    [required]="chosenUserId? false : true" [(ngModel)]="newUser.password">
+                <label for="confirm-password">Confirm Password:</label>
+                <input type="password" name="confirm-password" class="form-control" placeholder=""
+                    [required]="chosenUserId? false : true" minlength="4" [(ngModel)]="newUser.confirmPassword">
+                <label for="role">Role:</label>
+                <select name="role" class="form-select" required [(ngModel)]="newUser.role">
+                    <option value="default" selected="selected" disabled hidden>Select a role</option>
+                    <option value="admin">Admin</option>
+                    <option value="user">User</option>
+                </select>
+                <div class="text-end">
+                    <button type="submit" class="btn btn-primary my-4" [disabled]="!addForm.form.valid">
+                        {{chosenUserId?'Edit User': 'Add User'}}
+                    </button>
+                    <button *ngIf="chosenUserId" class="btn btn-danger ms-2"
+                        (click)="chosenUserId=undefined; addForm.reset()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>

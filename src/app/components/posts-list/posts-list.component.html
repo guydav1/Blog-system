@@ -1,0 +1,39 @@
+<ng-container *ngIf="posts">
+    <div *ngFor="let post of posts" class="custom-card">
+        <div class="row">
+
+            <div class="col-5 my-auto">
+                <img #image onerror="this.style.display='none'"
+                    src="{{post.imageURL || defaultImageUrl}}" alt="" class="image rounded">
+            </div>
+            <div class="col">
+                <div class="title pt-3">
+                    <h2>{{post.title}}</h2>
+                </div>
+
+                <div class="card-body">
+                    <p class="text-wrap" [innerText]="htmlToText(post.description)"></p>
+
+                    <a routerLink="/post/{{post._id}}" class="text-reset fw-bold fst-italic">Read More <i
+                            class="fa fa-caret-right"></i></a>
+                </div>
+
+                <div class="d-flex justify-content-between mt-3">
+                    <div class="px-3 fs-6">{{post.publishDate | date}}</div>
+                    <a class="me-auto" routerLink="/post/{{post._id}}" fragment="comments">Comments
+                        ({{post.totalComments}})
+                    </a>
+                    <div class="d-flex flex-wrap">
+                        <a routerLink="/search/tags/{{tag}}" *ngFor="let tag of post.tags"
+                            class="px-2 py-1 mx-1 border rounded-pill tag fs-7">{{tag}}</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <mat-paginator style-paginator showFirstLastButtons [length]="totalPosts" [hidePageSize]="hidePageSize"
+        [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="handlePage($event)">
+    </mat-paginator>
+</ng-container>

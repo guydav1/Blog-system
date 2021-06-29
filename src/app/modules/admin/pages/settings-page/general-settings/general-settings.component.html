@@ -1,0 +1,29 @@
+<div class="my-3">
+    <h4>General settings</h4>
+</div>
+<div class="row d-flex flex-sm-row flex-column">
+    <h5>Default Post Image</h5>
+    <div class="fs-7 text-muted mb-1">
+        Providing a default image will cause all the posts without an image, to display this one as their own.
+    </div>
+    <div class="col-lg-3 d-flex justify-content-center align-items-center">
+        <img *ngIf="isPictureLoaded && defaultImageUrl" [src]="defaultImageUrl" onerror="this.style.visibility='hidden'"
+        alt="default post image" height="250" width="100%" #defaultImage>
+        <i *ngIf="!isPictureLoaded" class="fa fa-spinner fa-5x fa-spin"></i>
+    </div>
+
+    <div class="col-lg-3 text-center">
+        <div class="row my-4">
+            <div class="col-sm-10 col-4 d-grid">
+                <input type="file" (change)="onUploadPicture($event)" class="d-none" accept=".jpg,.jpeg,.png" #file>
+                <input type="button" [value]="defaultImageUrl ? 'Change default post image':'Upload default post image'" class="btn btn-secondary" (click)="file.click()"
+                [disabled]="!isPictureLoaded">
+            </div>
+            <div class="col-sm-auto">
+                <i class="fa fa-trash fa-2x clickable hoverable p-1" (click)="deletePostPicture()"></i>
+            </div>
+        </div>
+        <div class="form-text">Must be JPG, JPEG or PNG and cannot exceed 1.5MB.</div>
+        <div *ngIf="errorMessage" class="text-danger fs-4 p-5">{{errorMessage}}</div>
+    </div>
+</div>

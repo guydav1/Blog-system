@@ -1,0 +1,306 @@
+[{
+  "_id": {
+    "$oid": "6098fe18534ea142b4d36c25"
+  },
+  "tags": [
+    "mu",
+    "lorencia",
+    "yohai"
+  ],
+  "title": "How yohai get lost in lorencia part 2",
+  "author": "Admin",
+  "body": "Its all start yestrday, yohai create darklord and start walking on lorencia streets he found some monsters like spiders and dragons and instead of killing them he try to play with them, in the meantime kundun saw the potential of this idiot and kiddnap him, police guild try to search him all over the map and even kalima but they found nothing",
+  "imageURL": "https://cdna.artstation.com/p/assets/images/images/004/796/364/large/denis-fernandes-lorencia-s-tales.jpg",
+  "description": "Its all start yestrday, yohai create darklord and start walking on lorencia streets he found some monsters like spiders and dragons and instead of killing them he try to play with them, in the meantime kundun saw the potential of this idiot and kiddnap him, police guild try to search him all over the map and even kalima but they found nothing",
+  "date": {
+    "$date": "2021-05-10T09:34:16.641Z"
+  },
+  "__v": 24,
+  "comments": [
+    {
+      "_id": {
+        "$oid": "6099470abcaf062880f546f8"
+      },
+      "author": "a",
+      "body": "a",
+      "date": {
+        "$date": "2021-05-10T14:45:30.517Z"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "6099474abcaf062880f546f9"
+      },
+      "author": "asdf",
+      "body": "asdf",
+      "date": {
+        "$date": "2021-05-10T14:46:34.623Z"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "6099474dbcaf062880f546fa"
+      },
+      "author": "aa",
+      "body": "aa",
+      "date": {
+        "$date": "2021-05-10T14:46:37.676Z"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "609948f9bcaf062880f546fb"
+      },
+      "author": "asdf",
+      "body": "asdfsdaf",
+      "date": {
+        "$date": "2021-05-10T14:53:45.879Z"
+      }
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "6098fe6a534ea142b4d36c26"
+  },
+  "tags": [
+    "mu",
+    "lorencia",
+    "yohai"
+  ],
+  "title": "How yohai get lost in lorencia part 3",
+  "author": "Admin",
+  "body": "Its all start yestrday, yohai create darklord and start walking on lorencia streets he found some monsters like spiders and dragons and instead of killing them he try to play with them, in the meantime kundun saw the potential of this idiot and kiddnap him, police guild try to search him all over the map and even kalima but they found nothing",
+  "comments": [
+    {
+      "_id": {
+        "$oid": "6099429dce94230e2ceea4e5"
+      },
+      "author": "Yohai",
+      "body": "thanks for all of you i am fine just play with the fish in atlans",
+      "date": {
+        "$date": "2021-05-10T14:26:37.372Z"
+      }
+    }
+  ],
+  "imageURL": "https://i.ytimg.com/vi/RN0SQhL4mxY/maxresdefault.jpg",
+  "description": "Etiam non lacus in sapien euismod elementum in vel risus. Mauris risus mi, vulputate non elementum id, bibendum at massa. Nullam nulla dui, ullamcorper sed congue ac, laoreet vitae diam. Donec vitae urna faucibus, dignissim ipsum ultricies, sagittis orci. Vestibulum sit amet velit faucibus, rhoncus massa ac, iaculis nunc. Cras aliquet dui eu bibendum tristique. Nam placerat sodales lacus, ultrices faucibus tortor tristique ac. Nam id risus non enim ultricies sagittis. Morbi semper scelerisque massa at sollicitudin. Vestibulum laoreet mauris risus, ut interdum mauris laoreet ac. Mauris nibh elit, varius iaculis viverra nec, malesuada vel tellus. Suspendisse malesuada nunc sapien, quis gravida lorem maximus sit amet. In sagittis lectus est, non ultricies quam facilisis rhoncus. Suspendisse consequat arcu eget tristique scelerisque. Praesent ultricies rutrum ante vel laoreet.",
+  "date": {
+    "$date": "2021-05-10T09:35:38.173Z"
+  },
+  "__v": 1
+},{
+  "_id": {
+    "$oid": "609902a58338925fcc114b9f"
+  },
+  "tags": [
+    "bitcoin",
+    "dodgecoin"
+  ],
+  "title": "Why the blockchain matters",
+  "author": "Seth",
+  "body": "<p><em>But first, let&rsquo;s understand some words&hellip;</em></p>\r\n<p><strong>Bitcoin</strong>&nbsp;is not the blockchain. If the blockchain is a printing press, Bitcoin is a kind of paper money. There are countless things that one can do with a printing press, in fact, it changed the world, but the invention of paper money isn&rsquo;t even one of the top 100 most important outputs the printed press created.</p>\r\n<p><strong>Cryptocurrency</strong>&nbsp;has a terrible name. Most people associate &ldquo;crypto&rdquo; with spies and secrets. And a currency is generally backed by a nation, with a treasury, an exchequer and banks.</p>\r\n<p>It&rsquo;s more accurately thought of as a&nbsp;<strong>token</strong>.</p>\r\n<p>If you went to an amusement park, you might buy a bunch of tokens or tickets to go on the rides. And if you run one of the rides, you collect the tokens, which at some point, you can trade in for a different sort of value, probably currency.</p>\r\n<p>If people need tokens and they&rsquo;re scarce, they go up in value. If people think that tokens are going to up in value, they might buy them in anticipation of that. And the things that people do to get tokens can range from simply buying them with paper money (!) to performing various tasks (like the ride operators in the example above).</p>\r\n<p>And, if a lot of people own tokens, they&rsquo;re likely to do things that make tokens go up in value. Thus, an ecosystem is born.</p>\r\n<p>Okay, so what&rsquo;s the blockchain?</p>\r\n<p><em>It&rsquo;s a database.</em></p>\r\n<p>Unlike most databases, it&rsquo;s not controlled by one entity and it&rsquo;s not easily rewritten. Instead, it&rsquo;s a ledger, a permanent, examinable, public database. One can use it to record transactions of various sorts.</p>\r\n<p>It would be a really good way to keep track of property records, for example. Instead, we have title insurance, unsearchable folders of deeds in City Hall and often dusty tax records.</p>\r\n<p>There are databases everywhere around us (Facebook, for example, is mostly a database&ndash;who are the users, who do they know, what do they do?). Because the internet rewards people who own networks so handsomely, these organizations continue to gain in power. Google began by building a database on top of the open internet, and they&rsquo;ve spent the last twenty years relentlessly making the internet less open so they can fortify the power of their databases and the attention they influence or control.</p>\r\n<p>And that&rsquo;s the first reason that the blockchain matters&mdash;because there&rsquo;s a chance that it might lead to more open, resilient, market-focused networks and databases. It&rsquo;s only a chance, though, because all the hype around the tokens sometimes makes it seem more likely that financial operators will simply seek to manipulate unregulated markets for their own benefit.</p>\r\n<p>The second reason might support positive change. The existence of tokens and decentralization means that it&rsquo;s possible to build resilient open source communities where early contributors and supporters benefit handsomely over time. No one owns these communities, and we can hope that these communities will work hard to serve themselves and their users, not the capital markets or other short-term players.</p>\r\n<p>Consider a project like Wikipedia. Tens of thousands of people have devoted millions of hours to working to build it. 5,000 active editors are responsible for most of the work that we benefit from every day. This is unpaid work, done for the community and for the satisfaction and status that comes with it.</p>\r\n<p>But of the top 100 websites, there are very few that are built on this model.</p>\r\n<p>Now imagine a blockchain/token project in which contributors earned tokens as they built it and supported it.</p>\r\n<p>Over time, the decentralized project would go up in value. As the ecosystem and the market delivered more and more utility to more and more people, the users would need to buy tokens to use it. And the holders of tokens would receive either a dividend or have the ability to sell their tokens if they chose.</p>\r\n<p>Early speculators would attract more attention, and people with more skill than capital could invest by contributing early and often.</p>\r\n<p>As the project reached a steady state, the stakeholders would shift, from innovators and speculators to people who treat their daily contributions as a job without a boss. Innovators could build on top of this network without permission, creating more and more variations and choice using the same underlying database.</p>\r\n<p>One way to consider this: The open web led to a huge leap in the number of useful databases that we all use (things like Zillow, Instagram and even Tinder). They were fairly cheap to launch and run, and once the network effect kicked in, the profits were significant. Investors were eager to fund the next one, because the odds of a big win dwarfed most of what they could choose from in traditional businesses.</p>\r\n<p>But dominant players are now working to make the openness of the web (the thing that allowed them to grow in the first place) less open. Google and Facebook and others push to make their stock price go up, not to serve users and others who now understand they have little choice in the matter.</p>\r\n<p>The distributed nature of the blockchain, combined with this novel way of funding early contributions means that the network effect may very well bring powerful new databases to the fore, creating new ways for us to interact.</p>\r\n<p>It&rsquo;s hardly going to be perfect. There&rsquo;s the issue of how the blockchain itself is run. If it&rsquo;s run on the original method&mdash;proof of work&mdash;it&rsquo;s likely to be a carbon disaster, getting worse as it succeeds. Fortunately, there are new approaches on the horizon (with great names like &lsquo;proof of stake&rsquo; and &lsquo;sharding&rsquo;) that might address these problems.</p>\r\n<p>For the typical user, the existence of the blockchain itself won&rsquo;t matter, just as you don&rsquo;t need to know how many volunteer editors Wikipedia has to benefit from using it.</p>\r\n<p>The reason the blockchain matters is that it is an agent of change. Just like the transistor and yes, the printing press, when an agent of change shows up, it often leads to shifts that we probably didn&rsquo;t expect.</p>\r\n<p>Understanding it now is more productive than simply being forced to deal with it later.</p>",
+  "comments": [
+    {
+      "_id": {
+        "$oid": "60992ac24e1105475421bc37"
+      },
+      "author": "yohai",
+      "body": "amazing shit dude i really love it",
+      "date": {
+        "$date": "2021-05-10T12:44:50.784Z"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "60992ae74e1105475421bc38"
+      },
+      "author": "Elon",
+      "body": "hahaha i can prove you wrong with one twit",
+      "date": {
+        "$date": "2021-05-10T12:45:27.498Z"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "60993d374e1105475421bc3b"
+      },
+      "date": {
+        "$date": "2021-05-10T14:03:35.351Z"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "60993d534e1105475421bc3d"
+      },
+      "date": {
+        "$date": "2021-05-10T14:04:03.489Z"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "60993dbbce94230e2ceea4cc"
+      },
+      "author": "Erik",
+      "body": "Banana Lemon Squeezy Pz",
+      "date": {
+        "$date": "2021-05-10T14:05:47.591Z"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "60993ee9ce94230e2ceea4cd"
+      },
+      "author": "Edward",
+      "body": "I am the king",
+      "date": {
+        "$date": "2021-05-10T14:10:49.814Z"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "60993f06ce94230e2ceea4ce"
+      },
+      "author": "Miss",
+      "body": "Pigi",
+      "date": {
+        "$date": "2021-05-10T14:11:18.364Z"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "60993f0bce94230e2ceea4cf"
+      },
+      "author": null,
+      "body": null,
+      "date": {
+        "$date": "2021-05-10T14:11:23.933Z"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "60993f48ce94230e2ceea4d3"
+      },
+      "author": "Dodge",
+      "body": "i am reall",
+      "date": {
+        "$date": "2021-05-10T14:12:24.155Z"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "60993f49ce94230e2ceea4d4"
+      },
+      "author": null,
+      "body": null,
+      "date": {
+        "$date": "2021-05-10T14:12:25.331Z"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "6099404bce94230e2ceea4d8"
+      },
+      "author": "checking",
+      "body": "the empty",
+      "date": {
+        "$date": "2021-05-10T14:16:43.510Z"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "6099404fce94230e2ceea4d9"
+      },
+      "author": null,
+      "body": null,
+      "date": {
+        "$date": "2021-05-10T14:16:47.449Z"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "6099411bce94230e2ceea4df"
+      },
+      "author": "please",
+      "body": "work now",
+      "date": {
+        "$date": "2021-05-10T14:20:11.638Z"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "6099411ece94230e2ceea4e0"
+      },
+      "author": null,
+      "body": null,
+      "date": {
+        "$date": "2021-05-10T14:20:14.292Z"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "60994139ce94230e2ceea4e2"
+      },
+      "author": "סליחה",
+      "body": "אדווארד",
+      "date": {
+        "$date": "2021-05-10T14:20:41.765Z"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "60994a4dbcaf062880f546fc"
+      },
+      "author": "חמאס",
+      "body": "מחכים ל6",
+      "date": {
+        "$date": "2021-05-10T14:59:25.669Z"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "60994a52bcaf062880f546fd"
+      },
+      "author": "ג'יאהד",
+      "body": "גם אנחנו",
+      "date": {
+        "$date": "2021-05-10T14:59:30.387Z"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "60994a56bcaf062880f546fe"
+      },
+      "author": "ישראל",
+      "body": "לא בבקשה לא",
+      "date": {
+        "$date": "2021-05-10T14:59:34.758Z"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "60994a65bcaf062880f546ff"
+      },
+      "author": "LATE BLOOMER",
+      "body": "it took me 2 hours to write this comment so maybe someone else commented???",
+      "date": {
+        "$date": "2021-05-10T14:59:49.724Z"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "6099735ebcaf062880f54700"
+      },
+      "author": "שדגכ",
+      "body": "דשגכ",
+      "date": {
+        "$date": "2021-05-10T17:54:38.922Z"
+      }
+    }
+  ],
+  "imageURL": "https://static.dw.com/image/56167112_303.jpg",
+  "description": "There are databases everywhere around us (Facebook, for example, is mostly a database–who are the users, who do they know, what do they do?). Because the internet rewards people who own networks so handsomely, these organizations continue to gain in power. Google began by building a database on top of the open internet, and they’ve spent the last twenty years relentlessly making the internet less open so they can fortify the power of their databases and the attention they influence or control.And that’s the first reason that the blockchain matters—because there’s a chance that it might lead to more open, resilient, market-focused networks and databases. It’s only a chance, though, because all the hype around the tokens sometimes makes it seem more likely that financial operators will simply seek to manipulate unregulated markets for their own benefit.",
+  "date": {
+    "$date": "2021-05-10T09:53:41.466Z"
+  },
+  "__v": 20
+}]

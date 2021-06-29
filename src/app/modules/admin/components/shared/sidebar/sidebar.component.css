@@ -1,0 +1,27 @@
+
+.sidebar {
+	width: 16rem;
+}
+
+.dropdown-toggle::after {
+    display:none;
+}
+.nav-pills .nav-link {
+    padding: 1rem;
+    color: white;
+    /* background: 0 0; */
+    border: 0;
+    border-radius: .25rem;
+}
+.nav-link:hover {
+    background-color: #174a7469;
+}
+.nav-link.active {
+    background-color: #174a74;
+}
+
+.nav-link {
+    display: block;
+    padding: .5rem 1rem;
+    text-decoration: none;
+}

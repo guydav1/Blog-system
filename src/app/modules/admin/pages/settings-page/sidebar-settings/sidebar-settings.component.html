@@ -1,0 +1,44 @@
+<!-- Side Bar settings -->
+
+    <h3>Sidebar Setting:</h3>
+    <div class="row">
+        <div class="col-lg-4">
+            <!-- Image Preview -->
+            <div class="text-center">
+                <img *ngIf="isPictureLoaded" [src]="sideBar.imageUrl"
+                    (error)="sideBarPicture.src = './assets/img/defaultimage.jpg'" alt="SideBar Picture" height="150"
+                    width="150" #sideBarPicture class="object-cover rounded-circle">
+                <i *ngIf="!isPictureLoaded" class="fa fa-spinner fa-5x fa-spin"></i>
+            </div>
+
+            <div class="row my-6">
+                <!-- Upload Button -->
+                <div class="col d-grid">
+                    <input type="file" (change)="onUploadPicture($event)" class="d-none" accept=".jpg,.jpeg,.png" #file>
+                    <input type="button" value="{{sideBar.imageUrl ? 'Change Sidebar Image' : 'Upload Sidebar Image'}}"
+                        class="btn btn-secondary" (click)="file.click()" [disabled]="!isPictureLoaded">
+                </div>
+                <!-- Delete Button -->
+                <div class="col-auto">
+                    <i class="fa fa-trash fa-2x clickable hoverable p-1" (click)="deleteSidebarPicture()"></i>
+                </div>
+                <div class="form-text">Must be JPG, JPEG or PNG and cannot exceed 1.5MB. Recommended size: 150x150.
+                </div>
+                <div *ngIf="errorMessage" class="text-danger fs-4 p-5">{{errorMessage}}</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-4">
+            <label for="about">About:</label>
+            <textarea id="about" rows="6" type="text" name="about" class="form-control" placeholder="about"
+                [(ngModel)]="sideBar.about" #sbabout="ngModel" maxlength="300"></textarea>
+            <div class="form-text">Information about you or the blog in under 300 characters.</div>
+            <!-- <div class="form-text text-danger" *ngIf="sbabout.invalid && sbabout.dirty">Required</div> -->
+
+            <div class="my-3">
+                <button class="btn btn-outline-primary" (click)="handleSideBarSave()">Update About</button>
+            </div>
+        </div>
+    </div>

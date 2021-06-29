@@ -1,0 +1,7 @@
+Showing results for {{searchString}}:
+<div *ngIf="posts">
+    <app-posts-list [posts]="posts" [totalPosts]="totalPosts" [hidePageSize]="true" (page)="search"></app-posts-list>
+</div>
+<div *ngIf="!posts && isLoaded">
+    No results.
+</div>

@@ -1,0 +1,60 @@
+<div class="d-flex justify-content-start align-center">
+    <input #search type="text" name="search" (keyup)="keyUp(search.value)" placeholder="Search..." class="form-control col-auto"
+        [(ngModel)]="searchQuery">
+    <i *ngIf="searching" class="ms-2 fa fa-spinner fa-spin fa-2x fa-fw"></i>
+</div>
+<div *ngIf="error">
+    Nothing has been found.
+</div>
+<div class="table-responsive" *ngIf="!error">
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Content</th>
+                    <th>Author</th>
+                    <th>Date</th>
+                    <th>Post</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let comment of comments">
+                    <td style="max-width: 50%; width: 50%;">
+                        <div *ngIf="comment == chosenCommentEdit else n" class="input-group">
+                            <textarea class="form-control" name="body" #textArea required>{{comment.body}}</textarea>
+                            <button class="btn btn-primary btn-sm px-3"
+                                (click)="handleEditSubmit(textArea.value)">Edit</button>
+                            <button class="btn btn-outline-danger btn-sm" (click)="chosenCommentEdit = undefined"
+                                ngbTooltip="Cancel"><i class="fa fa-times"></i></button>
+                        </div>
+
+                        <ng-template #n>
+                            {{comment.body.length > 200 ? ((comment.body | slice:0:200) +'\n'+ "...") :
+                            comment.body}}
+                        </ng-template>
+                    </td>
+                    <td>{{comment.author}}</td>
+                    <td>{{comment.date | date:'YYYY/MM/dd HH:mm'}}</td>
+                    <td><a href="./post/{{comment.postId}}" target="_blank"
+                            rel="noopener noreferrer">{{comment.postTitle}}</a></td>
+                    <td class="action">
+                        <button class="actionButton" type="button" (click)="handleDelete(comment)">
+                            <i class="fa fa-trash" ngbTooltip="Delete"></i>
+                        </button>
+                        <button class="actionButton" type="button" (click)="handleEdit(comment)">
+                            <i class="fa fa-pencil" ngbTooltip="Edit"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <mat-paginator [length]="totalComments" [pageSize]="pageSize" [pageIndex]="pageIndex"
+        [pageSizeOptions]="[5, 10, 25, 100]" (page)="page($event)" [showFirstLastButtons]="true" [disabled]="!loaded">
+    </mat-paginator>
+</div>
+<!-- <ngb-toast *ngIf="deleted" (hide)="deleted = false" [delay]="5000" [autohide]="true"
+    class="bg-success text-light w-50 mx-auto text-center fs-6 toast">
+    comment deleted successfuly =)
+</ngb-toast> -->

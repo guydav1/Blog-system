@@ -1,0 +1,6 @@
+<h3>Edit Post</h3>
+<div class="row" *ngIf="post">
+    <div class="col-12 my-4">
+        <app-post-form [postData]="post" (formData)="onSubmit($event)"></app-post-form>
+    </div>
+</div>

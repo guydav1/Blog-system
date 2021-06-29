@@ -1,0 +1,3 @@
+<ng-container *ngIf="posts">
+    <app-posts-list [posts]="posts" [totalPosts]="totalPosts" (page)="handlePage($event)"></app-posts-list>
+</ng-container>

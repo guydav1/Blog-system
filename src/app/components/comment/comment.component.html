@@ -1,0 +1,11 @@
+<div *ngIf="comment" class="custom-card pb-0">
+    <div class="title">
+        <h5>{{index}}. <a *ngIf="comment.postedBy?.username; else noUser"
+                [routerLink]="['/','u',comment.postedBy?.username]" class="text-reset hoverable">{{comment.author}}</a>
+           <ng-template #noUser> Guest ({{comment.author}})</ng-template></h5>
+    </div>
+    <div class="card-body">
+        <p class="text-wrap">{{comment.body}}</p>
+        <p>Posted on: {{comment.date | date:"dd/MM/YYYY HH:mm "}}</p>
+    </div>
+</div>

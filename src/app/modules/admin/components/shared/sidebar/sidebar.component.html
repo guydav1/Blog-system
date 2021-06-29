@@ -1,0 +1,92 @@
+<div class="navbar navbar-expand-lg bg-dark h-100">
+    <div class="collapse navbar-collapse h-100" id="sidebar">
+
+        <div class="d-flex flex-column flex-shrink-0 h-100 sidebar" *ngIf="(loggedUser$ | async) as user">
+
+            <div class="d-flex justify-content-between text-muted fs-5 px-2">
+                <a href="/" target="_blank" ngbTooltip="Go to blog" class="text-muted"><i
+                        class="fa fa-external-link"></i></a>
+                <li ngbDropdown display="dynamic" class="list-unstyled hoverable">
+                    <a role="button" ngbDropdownToggle class="text-white text-decoration-none">
+                        <i class="fa fa-user"></i>
+                    </a>
+                    <ul ngbDropdownMenu>
+                        <div class="p-2">
+                            Hello {{user.username }}.
+                        </div>
+                        <div>
+                            <a ngbDropdownItem routerLink="/u/{{user.username}}"><i class="fa fa-user"></i> Profile</a>
+                            <a ngbDropdownItem routerLink="/user/settings"><i class="fa fa-cog"></i> Settings</a>
+                            <hr class="dropdown-divider">
+                            <button ngbDropdownItem (click)="logout()"><i class="fa fa-sign-out"></i> Log Out</button>
+                        </div>
+
+                    </ul>
+                </li>
+
+            </div>
+            <div class="d-flex flex-column justify-content-center align-items-center py-4">
+                <img [src]="user.profilePicture" (error)="profilePicture.src = 'assets/img/profile.png'"
+                    class="rounded-circle object-cover m-1" height="100" width="100" #profilePicture>
+                <div class="text-white">
+                    {{user.username}}
+                </div>
+                <div class="text-muted fs-7">
+                    {{user.role}}
+                </div>
+            </div>
+
+            <ul class="nav nav-pills flex-column mb-auto">
+                <li class="nav-item">
+                    <a routerLink="./" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+                        class="nav-link" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">
+                        <i class="fa fa-windows"></i>
+                        DashBoard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink="./stats" routerLinkActive="active" class="nav-link" data-bs-toggle="collapse"
+                        data-bs-target=".navbar-collapse.show">
+                        <i class="fa fa-bar-chart"></i>
+                        Statistics
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink="./posts" routerLinkActive="active" class="nav-link" data-bs-toggle="collapse"
+                        data-bs-target=".navbar-collapse.show">
+                        <i class="fa fa-list"></i>
+                        Posts
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink="./add-post" routerLinkActive="active" class="nav-link" data-bs-toggle="collapse"
+                        data-bs-target=".navbar-collapse.show">
+                        <i class="fa fa-pencil"></i>
+                        Add Post
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink="./comments" routerLinkActive="active" class="nav-link" data-bs-toggle="collapse"
+                        data-bs-target=".navbar-collapse.show">
+                        <i class="fa fa-comment"></i>
+                        Comments
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink="./users" routerLinkActive="active" class="nav-link" data-bs-toggle="collapse"
+                        data-bs-target=".navbar-collapse.show">
+                        <i class="fa fa-user"></i>
+                        Users
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink="./settings" routerLinkActive="active" class="nav-link" data-bs-toggle="collapse"
+                        data-bs-target=".navbar-collapse.show">
+                        <i class="fa fa-gear"></i>
+                        Settings
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

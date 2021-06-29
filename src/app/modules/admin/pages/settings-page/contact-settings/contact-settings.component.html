@@ -1,0 +1,56 @@
+<div class="container" *ngIf="{data: (contact$ | async)} as contact">
+    <h3>Contact Information</h3>
+    <form (ngSubmit)="onSubmit(contactForm)" #contactForm="ngForm">
+        <!-- phone -->
+        <div class="row align-items-baseline my-4">
+            <div class="col-sm-2">
+                <i class="fa fa-phone mx-2"></i>
+                <label for="phone">Phone Number:*</label>
+            </div>
+            <div class="col-sm-4">
+                <input #phone="ngModel" name="phone" type="tel" class="form-control" maxlength="20" [ngModel]="contact.data?.phone" required>
+                <span class="form-text" *ngIf="phone.invalid && phone.touched"> Required</span>
+            </div>
+        </div>
+        <!-- email -->
+        <div class="row align-items-center my-4">
+            <div class="col-sm-2">
+                <i class="fa fa-envelope mx-2"></i>
+                <label for="email">Email:*</label>
+            </div>
+            <div class="col-sm-4">
+                <input #email="ngModel" name="email" type="email" class="form-control" maxlength="40" [ngModel]="contact.data?.email" required>
+                <span class="form-text" *ngIf="email.invalid && email.touched">Required</span>
+            </div>
+        </div>
+        <!-- address -->
+        <div class="row align-items-center my-4">
+            <div class="col-sm-2">
+                <i class="fa fa-location-arrow mx-2"></i>
+                <label for="address">Address:*</label>
+            </div>
+            <div class="col-sm-4">
+                <input #address="ngModel" name="address" type="text" class="form-control" [ngModel]="contact.data?.address" required>
+                <span class="form-text" *ngIf="address.invalid && address.touched">Required</span>
+            </div>
+        </div>
+        <!-- google map url -->
+        <div class="row align-items-center my-4">
+            <div class="col-sm-2">
+                <i class="fa fa-map mx-2"></i>
+                <label for="googleMapURL">Google Map:</label>
+            </div>
+            <div class="col-sm-4">
+                <input name="googleMapURL" type="text" class="form-control" [ngModel]="contact.data?.googleMapURL">
+            </div>
+        </div>
+        <!-- Submit -->
+        <div class="row">
+            <div class="col-sm-6 text-end">
+                <button type="submit" class="btn btn-primary" [disabled]="!contactForm.form.valid">
+                    Save
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

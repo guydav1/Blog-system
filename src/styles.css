@@ -1,0 +1,131 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
+.seperator {
+	background-color: transparent;
+	margin: 5px auto;
+	padding: 5px 0;
+	border-top: 1px dashed rgb(0, 0, 0) !important;
+	width: 95%;
+}
+
+.clickable {
+	cursor: pointer;
+}
+
+.hoverable {
+	opacity: 0.85;
+}
+.hoverable:hover {
+	opacity: 1;
+}
+
+html,
+body {
+	height: 100%;
+	font-family: 'Alegreya Sans', sans-serif;
+}
+body {
+	margin: 0;
+	font-family: Roboto, 'Helvetica Neue', sans-serif;
+	background-color: #f0f5f9;
+}
+
+main {
+	min-height: 100vh;
+	position: relative;
+	/* z-index: 1; */
+	background-color: #f0f5f9;
+}
+
+.container {
+	max-width: 64rem;
+}
+
+.form-control {
+	transition: border-color 200ms ease-in;
+	border-radius: 0.15rem;
+}
+.form-control:focus {
+	border-color: #000;
+	box-shadow: none;
+}
+
+.form-control.ng-invalid.ng-touched,
+input.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched,
+editor.ng-invalid.ng-touched {
+	border: 1px solid red;
+}
+
+.my-6 {
+	margin-top: 5rem !important;
+	margin-bottom: 5rem !important;
+}
+.my-7 {
+	margin-top: 5rem !important;
+	margin-bottom: 5rem !important;
+}
+.my-8 {
+	margin-top: 7rem !important;
+	margin-bottom: 7rem !important;
+}
+.my-9 {
+	margin-top: 9rem !important;
+	margin-bottom: 9rem !important;
+}
+.fs-7 {
+	font-size: 0.95rem !important;
+}
+.fs-8 {
+	font-size: 0.9rem !important;
+}
+
+.object-cover {
+	object-fit: cover;
+}
+
+.custom-card {
+	background-color: #ffffff;
+	border-radius: 0.75rem;
+	/* border: 1px solid #ccc; */
+	margin: 1rem 0 2rem 0;
+	padding: 2rem;
+	box-shadow: 0 1px 3px 0 #0000001a, 0 1px 2px 0 #0000000f;
+}
+
+.widget {
+	margin-bottom: 4rem;
+}
+.widget-title {
+	margin-bottom: 1rem;
+	padding-bottom: 0.5rem;
+	color: #888;
+	letter-spacing: 1px;
+	font-weight: 300;
+	text-transform: uppercase;
+	border-bottom: 1px solid #ccc;
+}
+
+.widget-body {
+	color: #777;
+}
+
+.pre-wrap {
+	white-space: pre-wrap;
+}
+
+.z-index-99 {
+	z-index: 9999999;
+}
+
+.btn-dark {
+	background-color: rgb(34, 34, 34);
+}
+
+@media screen and (max-width: 320px) {
+	.custom-card {
+		padding: 0.25rem;
+	}
+}

@@ -1,0 +1,39 @@
+<div class="py-3 mb-5" *ngIf="post">
+    <div class="title mb-3">
+        <h2>{{post.title}}</h2>
+    </div>
+    <div [innerHtml]="post.description">
+
+    </div>
+    <img onerror="this.style.display='none'" src="{{post.imageURL || (defaultImage$ | async)}}" alt=""
+        class="img-fluid">
+
+
+    <div class="card-body">
+        <p class="text-wrap" [innerHtml]="post.body | safe: 'html'"></p>
+    </div>
+
+    <hr class="seperator">
+    <div class="d-flex justify-content-between mt-3">
+        <div class="px-3 fs-6">{{post.publishDate | date}}</div>
+        <div class="">
+            <a routerLink="/search/tags/{{tag}}" *ngFor="let tag of post.tags"
+                class="px-1 mx-1 rounded-1 tag">{{tag}}</a>
+        </div>
+    </div>
+
+    <div class="add-comment mt-5 py-3">
+        <app-add-comment *ngIf="!post.isLocked" (newComments)="updateComments($event)"></app-add-comment>
+        <span *ngIf="post.isLocked">you can't add comments to this post</span>
+    </div>
+
+    <div class="comments mt-5" *ngIf="post.comments!.length > 0" id="comments">
+        <h2>{{post.comments!.length}} Comment{{post.comments!.length > 1 ? 's': ''}}:</h2>
+        <div
+            *ngFor="let comment of (post.comments!.slice().reverse() | slice:pageSize*(pageIndex-1):pageSize*pageIndex); index as i">
+            <app-comment [comment]=comment [index]="post.comments!.length - (i + pageSize*(pageIndex-1))"></app-comment>
+        </div>
+        <ngb-pagination [collectionSize]="post.comments!.length" [(page)]="pageIndex" [pageSize]="pageSize"
+            (pageChange)="scrollTo('comments')" aria-label="Default pagination"></ngb-pagination>
+    </div>
+</div>

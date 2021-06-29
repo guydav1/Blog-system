@@ -1,0 +1,49 @@
+<ng-container *ngIf="posts">
+
+    <div *ngFor="let post of posts, index as i" class="custom-card rounded-0">
+        <!-- Title -->
+        <h3 class="title"> <a routerLink="/post/{{post._id}}">{{post.title}}</a> </h3>
+        <!-- Post Data -->
+        <div class="mt-2 mb-4 fs-7 d-flex flex-row flex-wrap align-items-center post-data">
+            <!-- Date -->
+            <span>
+                <i class="fa fa-clock-o me-1"></i>{{post.publishDate | date:'d MMMM'}}
+            </span>
+            <span class="mx-2"></span>
+            <!-- Author -->
+            <a routerLink="/u/{{post.author}}">
+                <i class="fa fa-user me-1"></i>{{post.author}}</a>
+            <span class="mx-2"></span>
+            <!-- Tags -->
+            <div>
+                <i class="fa fa-tags me-1"></i>
+                <a routerLink="/search/tags/{{tag}}" *ngFor="let tag of post.tags; last as isLast"
+                    class="mx-1">{{tag}}{{isLast ? '' : ','}}</a>
+            </div>
+            <span class="mx-2"></span>
+            <!-- Comments -->
+            <span>
+                <i class="fa fa-comments me-1"></i>{{post.totalComments! > 1 ? post.totalComments + ' Comments' :
+                post.totalComments === 1 ? post.totalComments + ' Comment' : 'No Comments'}}
+            </span>
+            <span class="mx-2"></span>
+        </div>
+        <!-- Image -->
+        <a routerLink="/post/{{post._id}}">
+            <img #image onerror="this.style.display='none'" src="{{post.imageURL || defaultImageUrl}}"
+                class="rounded image">
+        </a>
+        <!-- Description -->
+        <div class="card-body" [innerHtml]="post.description | safe: 'html'"></div>
+        <!-- Read More -->
+        <a routerLink="/post/{{post._id}}">
+            <button class="btn btn-dark btn-sm rounded-0 fw-light fs-8 text-uppercase px-3 py-1">Read More <i
+                    class="fa fa-angle-right ms-1"></i></button>
+        </a>
+    </div>
+
+    <div class="text-center d-grid">
+        <a routerLink="/posts" class="btn btn-dark rounded-0">More Posts</a>
+    </div>
+
+</ng-container>

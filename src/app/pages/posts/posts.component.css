@@ -1,0 +1,54 @@
+.main-image {
+	width: 100%;
+	min-height: 250px;
+	max-height: 250px;
+	object-fit: cover;
+	border-radius: 1rem !important;
+}
+
+.border-top-dotted {
+	border-top: 3px dotted rgba(0, 0, 0, 0.308);
+}
+
+
+
+.tag {
+	color: rgba(0, 0, 0, 0.466);
+	transition: ease 0.3s;
+	text-decoration: none;
+}
+
+.tag:hover {
+	color: black;
+}
+
+::ng-deep .mat-paginator {
+	background-color: rgba(0, 0, 0, 0.034);
+	color: inherit;
+}
+
+::ng-deep .mat-select {
+	border-bottom: solid 1px black;
+	padding: 5px;
+	color: inherit;
+	/* font-weight: bold; */
+	/* font-size: 15px; */
+}
+::ng-deep .mat-select-value {
+	color: #005999;
+}
+::ng-deep .mat-select-arrow {
+	color: #005999;
+}
+::ng-deep .mat-option {
+	padding: 0 !important;
+	background-color: white;
+	color: black;
+}
+::ng-deep .mat-option-text {
+	text-align: center;
+}
+::ng-deep mat-option.mat-selected {
+	background: wheat !important;
+	color: black !important;
+}

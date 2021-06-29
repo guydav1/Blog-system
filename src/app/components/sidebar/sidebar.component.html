@@ -1,0 +1,78 @@
+<div class="custom-card bg-transparent px-3 rounded-0 shadow-none">
+    <!-- Search -->
+    <div class="widget">
+        <h5 class="widget-title">Search</h5>
+        <div class="widget-body">
+            <div class="search" style="position: relative;">
+                <form #f="ngForm" (ngSubmit)="handleSearch(f)">
+                    <button type="submit" class="btn search-button"
+                        style="position: absolute; right:1px; top: 0; height: 100%;">
+                        <i class="fa fa-search"></i>
+                    </button>
+                    <input type="text" [(ngModel)]="searchInput" name="searchInput" class="form-control">
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- About -->
+    <div class="widget" *ngIf="(config$ | async )?.sideBar as config">
+        <h5 class="widget-title">A few words</h5>
+        <div class="p-2 d-flex flex-column align-items-center widget-body">
+            <img src="{{config.imageUrl}}" alt="" class="about-img rounded-circle img-fluid mb-2"
+                onerror="this.style.display = 'none'" #sbimage>
+            <div class="text-break" style="white-space: pre-wrap;">{{config.about}}
+            </div>
+        </div>
+    </div>
+    <!-- Popular tags -->
+    <ng-container *ngIf="(tags$ | async) as tags">
+        <div class="widget" *ngIf="tags.length > 0">
+            <h5 class="widget-title">Popular Tags</h5>
+            <div class="widget-body">
+                <div class="tags">
+                    <ng-container *ngFor="let tag of tags |slice:0:15">
+                        <a routerLink="/search/tags/{{tag._id}}">
+                            {{tag._id}}
+                        </a>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+</div>
+
+
+<!-- 
+<ng-container *ngIf="{config: (configService.configObservable | async )?.sideBar, 
+        tags: (postService.tags | async) } as data">
+
+    <div class="custom-card px-3 rounded-0 shadow-none" *ngIf="data.config || (data.tags && data.tags.length > 0)">
+        <div class="widget" *ngIf="data.config as config">
+            <h5 class="widget-title">A few words</h5>
+            <div class="p-2 d-flex flex-column align-items-center widget-body">
+                <img src="{{config.imageUrl}}" alt="" class="about-img rounded-circle img-fluid mb-2"
+                    (error)="sbimage.src ='./assets/img/defaultimage.jpg' " #sbimage>
+                <div class="text-break" style="white-space: pre-wrap;">{{config.about}}
+                </div>
+            </div>
+        </div>
+        <ng-container *ngIf="data.tags as tags">
+            <div class="widget" *ngIf="tags.length > 0">
+                <h5 class="widget-title">Popular Tags</h5>
+                <div class="widget-body">
+                    <div class="tags">
+                        <ng-container *ngFor="let tag of tags |slice:0:15">
+                            <a routerLink="/search/tags/{{tag._id}}">
+                                {{tag._id}}
+                            </a>
+                        </ng-container>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+
+</ng-container>
+
+    
+ -->

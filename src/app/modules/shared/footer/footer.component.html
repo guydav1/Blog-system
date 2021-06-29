@@ -1,0 +1,51 @@
+<footer>
+    <div class="footer-wrapper">
+        <!-- Footer Logo -->
+        <div class="row py-5">
+            <div class="col-auto mx-auto">
+                <img [src]="($config | async)?.footerLogo || 'assets/img/logo.png'" alt="" class="w-100 object-cover">
+            </div>
+        </div>
+        <!-- Social Links -->
+        <div class="row">
+            <div class="col-auto mx-auto fs-4">
+                <a href="{{(s.url | url)}}" target="_blank" class="social" *ngFor="let s of ($config | async)?.social"
+                    ngbTooltip="{{s.name}}" placement="top">
+                    <i class="{{s.icon}}"></i>
+
+                </a>
+            </div>
+        </div>
+
+        <!-- Search Box -->
+        <div class="row py-5">
+            <div class="col-xl-4 col-auto mx-auto">
+                <form #seach="ngForm" (ngSubmit)="search()">
+                    <div class="input-group">
+                        <input type="search" name="searchQuery" class="form-control rounded-start"
+                            placeholder="Search Posts" [(ngModel)]="searchInput">
+                        <button type="submit" class="btn btn-dark">Search</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+        <!-- Text Blocks -->
+        <div class="row py-5 text-center footer-text">
+            <div class="col-md-6 col-lg-3 text-break mt-3"
+                *ngFor="let column of (($config | async)?.footerAboutSection)">
+                <h6>{{column.title}}</h6>
+                <div [innerHtml]="column.body"></div>
+            </div>
+        </div>
+
+
+        <!-- Copyright -->
+        <div class="copyright text-center">
+            Built by Elad and <a href="http://guydav.com">GuyDav</a>.
+        </div>
+
+    </div>
+
+</footer>

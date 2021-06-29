@@ -1,0 +1,63 @@
+<div class="container">
+    <div class="custom-card col-5 mx-auto">
+
+        <h4 class="card-title mt-3 text-center">Create Account</h4>
+
+
+        <form (ngSubmit)="onSubmit()" #registerForm="ngForm">
+            <div class="py-2">
+                <label for="username" class="fs-7 p-1">Username</label>
+                <input type="text" name="username" maxlength="10" [(ngModel)]="newUser.username" class="form-control"
+                    required #username="ngModel">
+                <div *ngIf="username.touched && username.invalid" class="form-text text-danger">
+                    Username is Required.
+                </div>
+            </div>
+
+            <div class="py-2">
+
+                <label for="email" class="fs-7 p-1">Email</label>
+                <input type="email" name="email" [(ngModel)]="newUser.email" class="form-control" required
+                    #email="ngModel">
+                <div *ngIf="email.touched && email.invalid" class="form-text text-danger">
+                    Email is Required.
+                </div>
+            </div>
+
+            <div class="py-2">
+
+                <label for="password" class="fs-7 p-1">Password</label>
+                <input type="password" name="password" minlength="4" [(ngModel)]="newUser.password" class="form-control"
+                    required #password="ngModel">
+                <div class="form-text">
+                    At least 4 characters.
+                </div>
+                <div *ngIf="password.touched && password.invalid" class="form-text text-danger">
+                    Password is Required.
+                </div>
+            </div>
+
+
+            <div class="py-2">
+                <label for="confirmPassword" class="fs-7 p-1">Confirm Password</label>
+                <input type="password" name="confirmPassword" [(ngModel)]="newUser.confirmPassword" class="form-control"
+                    [pattern]="password.value" required #confirmPassword="ngModel">
+                <div *ngIf="confirmPassword.dirty && confirmPassword.value.length > 3 && confirmPassword.value !== password.value"
+                    class="form-text text-danger">
+                    Password does not match.
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-block my-4" [disabled]="!registerForm.form.valid">
+                    Create Account
+                </button>
+            </div> <!-- form-group// -->
+
+            <p class="text-center">Have an account? <a routerLink="/login">Log In</a> </p>
+        </form>
+    </div>
+
+
+</div>

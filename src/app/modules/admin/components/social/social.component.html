@@ -1,0 +1,58 @@
+<div class="row">
+    <div class="col-lg-5">
+        <form #form="ngForm">
+            <div class="input-group">
+                <select name="social" class="form-select" [disabled]="selectedSocialIndex >= 0" #select>
+                    <option *ngFor="let s of socialList; index as i" value="{{i}}"
+                        [selected]="selectedSocialIndex >= 0 && social[selectedSocialIndex].name == s.name ? 'selected':''"
+                        >
+                        {{s.name}}
+                    </option>
+                </select>
+                <input type="text" name="url" class="form-control" placeholder="URL"
+                    #urlInput="ngModel" [ngModel]="selectedSocialIndex>=0 ? social[selectedSocialIndex].url:''"
+                    ngbTooltip="URL Must start with https / http" required>
+                <button type="button" class="btn btn-info" [disabled]="form.invalid"
+                    (click)="selectedSocialIndex >= 0 ? handleUpdateIcon(form, urlInput.value) :handleAddIcon(form, +select.value, urlInput.value)">
+                    {{selectedSocialIndex >= 0 ? 'Update' : 'Add'}}
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <!-- Social Icon List -->
+    <div cdkDropList #sList="cdkDropList" [cdkDropListData]="social" cdkDropListOrientation="horizontal"
+        [cdkDropListConnectedTo]="[rList]" (cdkDropListDropped)="drop($event)" class="col-lg-3 ">
+        <span *ngFor="let s of social, index as i" cdkDrag class="fa-stack fa-lg" placement="top" ngbTooltip="{{s.url}}"
+            (click)="handleClick(i)" style="cursor: move;">
+            <i class="fa fa-square fa-stack-2x text-dark"></i>
+            <i class="{{s.icon}} fa-stack-1x text-light"></i>
+        </span>
+        <div *ngIf="social.length > 0" class="form-text">
+            Drag to change order, click to edit.
+        </div>
+    </div>
+    <!-- Delete List -->
+    <div cdkDropList #rList="cdkDropList" [cdkDropListConnectedTo]="[sList]" [cdkDropListData]="removeList"
+        cdkDropListOrientation="horizontal" class="col-lg-1" (cdkDropListDropped)="drop($event)"
+        cdkDropListSortingDisabled>
+        <span *ngFor="let item of removeList" cdkDrag class="fa-stack fa-lg" placement="top" [cdkDragDisabled]="true"
+            ngbTooltip="Drag here to delete">
+            <i class="fa fa-square fa-stack-2x text-dark"></i>
+            <i class="{{item.icon}} fa-stack-1x text-light"></i>
+        </span>
+    </div>
+
+    <!-- Button -->
+    <div class="col-lg-1 text-end">
+        <button *ngIf="!loading" class="btn btn-primary" (click)="handleSave()">Save</button>
+        <button *ngIf="loading" class="btn btn-primary" type="button" disabled>
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            Saving...
+        </button>
+    </div>
+
+
+</div>

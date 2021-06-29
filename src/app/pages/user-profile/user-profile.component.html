@@ -1,0 +1,65 @@
+<ng-container *ngIf="user">
+    <!-- Header -->
+    <div class="d-flex w-100 bg-white shadow-sm mb-4 cover">
+        <div class="cover-image-container">
+            <img onerror="this.style.visibility='hidden'"
+                src="{{user.coverPicture}}"
+                class="cover-image">
+        </div>
+        <div class="cover-info d-flex flex-column flex-lg-row text-muted">
+            <div>
+                <img #profilePicture [src]="user.profilePicture || 'assets/img/profile.png'"
+                    (error)="profilePicture.src = 'assets/img/profile.png'" class="profile-image object-cover">
+            </div>
+            <div class="fw-bold fs-5 ms-lg-4 text-center text-dark">
+                {{ user.username }}
+                <div class="fs-6 fw-light">{{ user.role }}</div>
+            </div>
+            <div class="mx-5 s d-none d-lg-block"></div>
+            <div class="fs-6 text-center">
+                <span class="text-dark">User Since</span>
+                <div class="fs-7">{{ (user.createdAt | date) }}</div>
+            </div>
+            <ng-container *ngIf="!user.isEmailPrivate">
+                <div class="mx-5 s d-none d-lg-block"></div>
+                <div>
+                    <i class="fa fa-envelope fs-4  p-1"></i>
+                    {{ user.email}}
+                </div>
+            </ng-container>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="custom-card">
+                    <div class="widget">
+                        <h5 class="widget-title">About me</h5>
+                        <p class="widget-body" style="white-space: pre-wrap;">{{ user.bio || 'Hi, I am ' + user.username }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-7">
+                <div class="ms-3 mb-3">
+                    <h5>My Last Comments</h5>
+                </div>
+                <div *ngFor="let comment of comments" class="custom-card text-break">
+                    <strong>Post:&nbsp;</strong><span><a
+                            [routerLink]="['/','post',comment._id]">{{comment.title}}</a></span>
+                    <div class="text-break">
+                        <div class="pull-right">{{comment.comments.date | date:"short"}}</div>
+                        Comment:&nbsp;{{comment.comments.body}}
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</ng-container>
+
+<ng-container *ngIf="!user && isLoaded">
+    Page not found
+</ng-container>

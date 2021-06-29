@@ -1,0 +1,130 @@
+<div class="d-flex justify-content-center align-content-center"
+    *ngIf="($loggerUser | async) === (false || null || undefined)">
+    <i class="fa fa-spinner fa-spin"></i>
+</div>
+<div class="container my-2 p-0 p-sm-2" *ngIf="$loggerUser | async as user">
+    <h1><b>Settings</b></h1>
+    <hr>
+    <!-- Profile Picture  -->
+    <h5>Profile Picture</h5>
+    <div class="row custom-card text-center">
+        <div class="col-lg-3 justify-content-center align-items-center">
+            <img *ngIf="isPictureLoaded" [src]="user.profilePicture"
+                (error)="profilePicture.src = 'assets/img/profile.png'" alt="Profile Picture" height="200" width="200"
+                class="object-cover rounded-circle" #profilePicture>
+            <i *ngIf="!isPictureLoaded" class="fa fa-spinner fa-5x fa-spin"></i>
+        </div>
+        <div class="offset-lg-1 col-lg-4 text-center my-auto">
+            <div class="row my-4">
+                <div class="col d-grid">
+                    <input type="file" (change)="onUploadProfilePicture($event)" class="d-none" accept=".jpg,.jpeg,.png"
+                        #profileFile>
+                    <input type="button" value="Change Profile Picture" class="btn btn-secondary"
+                        (click)="profileFile.click()" [disabled]="!isPictureLoaded">
+                </div>
+                <div class="col-auto">
+                    <i class="fa fa-trash fa-2x clickable hoverable p-1" (click)="deleteProfilePicture()"></i>
+                </div>
+            </div>
+            <div class="form-text">Must be JPG, JPEG or PNG and cannot exceed 1.5MB.</div>
+            <div *ngIf="errorMessage" class="text-danger fs-4 p-5">{{errorMessage}}</div>
+        </div>
+    </div>
+    <!-- Cover Picture  -->
+    <h5>Cover Picture</h5>
+    <div class="row custom-card text-center">
+        <div class="col-lg-3 justify-content-center align-items-center">
+            <img *ngIf="isCoverLoaded" [src]="user.coverPicture" onerror="this.style.visibility = 'hidden'"
+                alt="Cover Picture" height="100%" width="100%" class="object-cover" #coverPicture>
+            <i *ngIf="!isCoverLoaded" class="fa fa-spinner fa-5x fa-spin"></i>
+        </div>
+        <div class="offset-lg-1 col-lg-4 text-center my-auto">
+            <div class="row my-4">
+                <div class="col d-grid">
+                    <input type="file" (change)="onUploadCoverPicture($event)" class="d-none" accept=".jpg,.jpeg,.png"
+                        #coverFile>
+                    <input type="button" [value]="user.coverPicture ? 'Change Cover Picture' : 'Upload Cover Picture'"
+                        class="btn btn-secondary" (click)="coverFile.click()" [disabled]="!isCoverLoaded">
+                </div>
+                <div class="col-auto">
+                    <i class="fa fa-trash fa-2x clickable hoverable p-1" (click)="deleteCoverPicture()"></i>
+                </div>
+            </div>
+            <div class="form-text">Must be JPG, JPEG or PNG and cannot exceed 1.5MB. Recommended Size: 1920x480.
+            </div>
+            <div *ngIf="errorMessage" class="text-danger fs-4 p-5">{{errorMessage}}</div>
+        </div>
+    </div>
+
+    <form (ngSubmit)="onSubmit(profileForm)" #profileForm="ngForm">
+        <h5>Personal Information</h5>
+        <div class="row custom-card">
+            <div class="row my-2">
+                <div class="col-lg-2"><label for="username">Username:</label></div>
+                <div class="col-lg-5"><input type="text" name="username" class="form-control" disabled
+                        value="{{user.username}}"></div>
+            </div>
+            <div class="row my-2">
+                <div class="col-lg-2"><label for="bio">Bio:</label></div>
+                <div class="col-lg-5">
+                    <textarea name="bio" id="bio" cols="30" rows="5" class="form-control" [ngModel]="user.bio"
+                        maxlength="300"></textarea>
+                    <div class="form-text">
+                        Information about yourself for your profile page in under 300 characters.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h5>Privacy and Security</h5>
+        <div class="row custom-card">
+            <div class="row my-2">
+                <div class="col-lg-2"><label for="email">Email:</label></div>
+                <div class="col-lg-5"><input type="email" name="email" id="email" class="form-control"
+                        [ngModel]="user.email" [value]="user.email">
+                </div>
+            </div>
+            <div class="row my-2">
+                <div class="col-lg-2"><label for="isEmailPrivate">Hide Email?</label></div>
+                <div class="col-lg-5">
+                    <div class="form-switch">
+                        <input type="checkbox" name="isEmailPrivate" id="isEmailPrivate" class="form-check-input"
+                            [ngModel]="user.isEmailPrivate" [value]="user.isEmailPrivate">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row my-2">
+                <div class="col-lg-2">
+                    <label for="password">Password:</label>
+                </div>
+                <div class="col-lg-5">
+                    <input type="password" minlength="4" name="password" id="password" class="form-control" ngModel>
+                    <div class="form-text">
+                        Must be at least 4 characters long.
+                    </div>
+                </div>
+            </div>
+
+            <div class="row my-2">
+                <div class="col-lg-2">
+                    <label for="confirmpassword">Confirm Password:</label>
+                </div>
+                <div class="col-lg-5">
+                    <input type="password" minlength="4" name="confirmpassword" id="confirmpassword"
+                        class="form-control" ngModel>
+                </div>
+            </div>
+        </div>
+
+
+        <span [ngbTooltip]="profileForm.form.pristine ? 'No Changes Made' : ''">
+            <button type="submit" class="btn btn-dark my-4"
+                [disabled]="!profileForm.form.valid || profileForm.form.pristine">
+                Save
+            </button>
+        </span>
+    </form>
+
+
+</div>

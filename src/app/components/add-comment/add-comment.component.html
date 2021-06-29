@@ -1,0 +1,40 @@
+<div class="custom-card">
+    <div class="text-center fs-5 my-3">
+        Add a comment:
+    </div>
+    <form #commentForm="ngForm" (ngSubmit)="onSubmit(commentForm)">
+        <div class="row g-3 align-items-center mb-3">
+            <div class="col-auto">
+                <label class="col-form-label" for="name">Name: *</label>
+            </div>
+
+            <div class="col-auto" *ngIf="(loggedUser$ | async) as loggedUser;else anonymous">
+                {{loggedUser.username}}
+            </div>
+            <ng-template #anonymous>
+                <div class="col-auto">
+                    <input type="text" [(ngModel)]="author" placeholder="Your name" name="name" id="name"
+                        class="form-control" #authorInput="ngModel" pattern="^(?!\s*$).+" required maxlength="10">
+                    <div class="form-text text-danger"
+                        *ngIf="authorInput.invalid && (authorInput.touched || authorInput.dirty)">
+
+                        <span *ngIf="authorInput.errors?.required">Required</span>
+                        <span *ngIf="authorInput.errors?.pattern">Must contain a letter</span>
+                    </div>
+                </div>
+            </ng-template>
+        </div>
+
+        <div class="mb-3">
+            <label for="text">Comment: *</label>
+            <textarea placeholder="Your Message" [(ngModel)]="body" name="text" id="text" class="form-control" rows="6"
+                #commentInput="ngModel" required maxlength="140" pattern="^(?!\s*$).+"></textarea>
+            <div class="form-text text-danger"
+                *ngIf="commentInput.invalid && (commentInput.touched || commentInput.dirty)">Required</div>
+
+        </div>
+        <span placement="top" [ngbTooltip]="commentForm.invalid ? 'All fields with * are required.' : ''">
+            <button type="submit" class="btn btn-success" [disabled]="submitted || commentForm.invalid">Send</button>
+        </span>
+    </form>
+</div>

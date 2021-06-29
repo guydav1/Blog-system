@@ -1,0 +1,105 @@
+<form (ngSubmit)="onSubmit(addPostForm)" #addPostForm="ngForm">
+
+    <div class="row">
+        <div class="col-lg-5">
+            <!-- Title -->
+            <div class="py-1">
+                <label for="title">Title: </label>
+                <input type="text" id="title" class="form-control" name="title" [ngModel]="postData?.title" #titleInput="ngModel" 
+                    required>
+                <div class="form-text text-danger my-2"
+                    *ngIf="titleInput.invalid && (titleInput.touched || titleInput.dirty)">Required</div>
+            </div>
+
+            <!-- Tags -->
+            <div class="py-1">
+                <label for="tags">Tags (Seperated by comma ( , ) ): </label>
+                <input type="text" id="tags" class="form-control" name="tags" [ngModel]="postData?.tags" #tagsInput="ngModel"
+                    maxlength="40" required>
+                <div class="form-text text-danger"
+                    *ngIf="tagsInput.invalid && (tagsInput.touched || tagsInput.dirty)">
+                    Required</div>
+            </div>
+
+            <!-- Image Url -->
+            <div class="py-1 d-flex align-items-center">
+                <label for="image">Preview Image: </label>
+                <!-- <input type="text" id="imageURL" class="form-control" name="imageURL" ngModel> -->
+                <input type="file" name="image" (change)="onUploadPicture($event)" #image hidden>
+                <input type="button" [value]="imageURL?' Change image': ' Upload image'"
+                    class="btn btn-secondary mx-2" (click)="image.click()">
+                <ng-container *ngIf="imageURL">
+                    <i class="fa fa-2x fa-trash clickable" (click)="onDeletePicture()"></i>
+                    <img [src]="imageURL" height="100" width="100">
+                </ng-container>
+            </div>
+
+            <!-- Lock Post Toggle -->
+            <div class="py-1">
+                <label for="isLocked">Lock Post?</label>
+                <span class="form-switch ms-3 ">
+                    <input type="checkbox" id="isLocked" class="form-check-input clickable" name="isLocked"
+                        [ngModel]="postData? postData?.isLocked : false">
+                </span>
+                <div class="form-text">
+                    Locked posts can't be commented on.
+                </div>
+            </div>
+
+            <!-- Publish Post Toggle -->
+            <div class="py-1">
+                <label for="isPublished">Publish Post?</label>
+                <span class="form-switch ms-3 ">
+                    <input type="checkbox" id="isPublished" class="form-check-input clickable"
+                        name="isPublished" [ngModel]="postData ? postData?.isPublished : true">
+                </span>
+            </div>
+        </div>
+        <div class="col">
+
+            <!-- Description -->
+            <label for="description">Description: </label>
+            <editor [init]="{
+                                base_url: '/tinymce', 
+                                suffix: '.min',  
+                                height: 300,
+                                menubar: false,
+                                plugins: [
+                                 'advlist autolink lists link image charmap print preview anchor',
+                                 'searchreplace visualblocks code fullscreen',
+                                 'insertdatetime wordcount paste'
+                               ],
+                               paste_as_text: true,
+                               toolbar: 'insertfile undo redo | bold italic forecolor | fontsizeselect | bullist numlist'
+                               }" name="description" [ngModel]="postData?.description" #descInput="ngModel" required>
+            </editor>
+            <div class="form-text text-danger"
+                *ngIf="descInput.invalid && (descInput.touched || descInput.dirty)">
+                Required</div>
+
+        </div>
+    </div>
+    <!-- Body -->
+    <label for="body">Text: </label>
+    <editor [init]="{
+            base_url: '/tinymce', 
+            suffix: '.min',     
+            menubar: false,
+            height: 500,
+            plugins: [
+            'advlist autolink lists link image charmap print preview anchor',
+             'searchreplace visualblocks code fullscreen',
+             'insertdatetime media table paste imagetools wordcount'
+           ],
+           toolbar: 'insertfile undo redo | styleselect | bold italic forecolor backcolor | fontselect fontsizeselect | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image'
+           }" [ngModel]="postData?.body" name="body" #textInput="ngModel" required></editor>
+    <div class="form-text text-danger" *ngIf="textInput.invalid && (textInput.touched || textInput.dirty)">
+        Required</div>
+
+
+    <!-- Submit Button -->
+    <button class="btn btn-outline-success my-4" type="submit"
+        [disabled]="addPostForm.form.invalid">
+        Submit
+    </button>
+</form>

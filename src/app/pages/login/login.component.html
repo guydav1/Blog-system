@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="custom-card mx-auto col-5">
+        <h4 class="card-title mt-3 text-center">Login</h4>
+
+        <form (ngSubmit)="login()">
+            <div class="py-2">
+                <label for="username" class="fs-7 p-1">Username:</label>
+                <input type="text" name="username" id="username" class="form-control" [(ngModel)]="username" required>
+            </div>
+            <div class="py-2">
+                <label for="password" class="fs-7 p-1">Password:</label>
+                <input type="password" name="password" id="password" class="form-control" [(ngModel)]="password"
+                    required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block my-4">Login</button>
+        </form>
+        <p class="text-center">
+            Dont have an account? <a routerLink="/register">Register</a>
+        </p>
+    </div>
+</div>
