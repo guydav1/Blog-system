@@ -19,7 +19,7 @@
                 <label for="email">Email:*</label>
             </div>
             <div class="col-sm-4">
-                <input #email="ngModel" name="email" type="email" class="form-control" maxlength="40" [ngModel]="contact.data?.email" required>
+                <input #email="ngModel" name="email" type="email" class="form-control" maxlength="40" [ngModel]="contact.data?.email" required email>
                 <span class="form-text" *ngIf="email.invalid && email.touched">Required</span>
             </div>
         </div>
