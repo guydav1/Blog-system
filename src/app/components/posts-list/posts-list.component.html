@@ -2,7 +2,7 @@
     <div *ngFor="let post of posts" class="custom-card">
         <div class="row">
 
-            <div class="col-5 my-auto">
+            <div class="col-xl-5 my-auto">
                 <img #image onerror="this.style.display='none'"
                     src="{{post.imageURL || defaultImageUrl}}" alt="" class="image rounded">
             </div>
