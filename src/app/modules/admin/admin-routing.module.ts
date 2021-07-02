@@ -1,14 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '../../guards/auth.guard';
-import { AuthLayoutComponent } from '../../_layouts/auth-layout/auth-layout.component';
 import { AddPostComponent } from './components/add-post/add-post.component';
 import { EditPostComponent } from './components/edit-post/edit-post.component';
 import { MainPageComponent } from './components/main-page/main-page.component';
 import { PostsComponent } from './components/posts/posts.component';
 import { LayoutComponent } from './layout.component';
 import { CommentsComponent } from './pages/comments/comments.component';
-import { LoginComponent } from './pages/login/login.component';
 import { AboutSettingsComponent } from './pages/settings-page/about-settings/about-settings.component';
 import { ContactSettingsComponent } from './pages/settings-page/contact-settings/contact-settings.component';
 import { FooterSettingsComponent } from './pages/settings-page/footer-settings/footer-settings.component';
@@ -44,12 +42,6 @@ const routes: Routes = [
 			{ path: '', component: MainPageComponent },
 		],
 		canActivate: [AuthGuard],
-	},
-
-	{
-		path: '',
-		component: AuthLayoutComponent,
-		children: [{ path: 'login', component: LoginComponent }],
 	},
 	{ path: '**', redirectTo: '' },
 ];
