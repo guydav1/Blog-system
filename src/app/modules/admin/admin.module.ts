@@ -5,7 +5,6 @@ import { FormsModule } from '@angular/forms';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { NgbDropdownModule, NgbModule, NgbToastModule } from '@ng-bootstrap/ng-bootstrap';
 import { EditorModule } from '@tinymce/tinymce-angular';
-import { AuthLayoutComponent } from '../../_layouts/auth-layout/auth-layout.component';
 import { FilterPipe } from '../../_pipes/filter.pipe';
 import { SortPipe } from '../../_pipes/sort.pipe';
 import { AdminRoutingModule } from './admin-routing.module';
@@ -19,7 +18,6 @@ import { SidebarComponent } from './components/shared/sidebar/sidebar.component'
 import { SocialComponent } from './components/social/social.component';
 import { LayoutComponent } from './layout.component';
 import { CommentsComponent } from './pages/comments/comments.component';
-import { LoginComponent } from './pages/login/login.component';
 import { AboutSettingsComponent } from './pages/settings-page/about-settings/about-settings.component';
 import { ContactSettingsComponent } from './pages/settings-page/contact-settings/contact-settings.component';
 import { FooterSettingsComponent } from './pages/settings-page/footer-settings/footer-settings.component';
@@ -44,8 +42,6 @@ import { UsersComponent } from './pages/users/users.component';
 		SortPipe,
 		CommentsComponent,
 		StatisticsComponent,
-		LoginComponent,
-		AuthLayoutComponent,
 		UsersComponent,
 		FooterSettingsComponent,
 		GeneralSettingsComponent,
