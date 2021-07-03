@@ -2,6 +2,31 @@
     <div class="title mb-3">
         <h2>{{post.title}}</h2>
     </div>
+     <!-- Post Data -->
+     <div class="mt-2 mb-4 fs-7 d-flex flex-row flex-wrap align-items-center post-data">
+        <!-- Date -->
+        <span>
+            <i class="fa fa-clock-o me-1"></i>{{post.publishDate | date:'d MMMM'}}
+        </span>
+        <span class="mx-2"></span>
+        <!-- Author -->
+        <a routerLink="/u/{{post.author}}">
+            <i class="fa fa-user me-1"></i>{{post.author}}</a>
+        <span class="mx-2"></span>
+        <!-- Tags -->
+        <div>
+            <i class="fa fa-tags me-1"></i>
+            <a routerLink="/search/tags/{{tag}}" *ngFor="let tag of post.tags; last as isLast"
+                class="mx-1">{{tag}}{{isLast ? '' : ','}}</a>
+        </div>
+        <span class="mx-2"></span>
+        <!-- Comments -->
+        <span>
+            <i class="fa fa-comments me-1"></i>{{post.totalComments! > 1 ? post.totalComments + ' Comments' :
+            post.totalComments === 1 ? post.totalComments + ' Comment' : 'No Comments'}}
+        </span>
+        <span class="mx-2"></span>
+    </div>
     <div [innerHtml]="post.description">
 
     </div>
@@ -12,19 +37,10 @@
     <div class="card-body">
         <p class="text-wrap" [innerHtml]="post.body | safe: 'html'"></p>
     </div>
-
-    <hr class="seperator">
-    <div class="d-flex justify-content-between mt-3">
-        <div class="px-3 fs-6">{{post.publishDate | date}}</div>
-        <div class="">
-            <a routerLink="/search/tags/{{tag}}" *ngFor="let tag of post.tags"
-                class="px-1 mx-1 rounded-1 tag">{{tag}}</a>
-        </div>
-    </div>
-
-    <div class="add-comment mt-5 py-3">
+    <hr>
+    <div class="add-comment py-3">
         <app-add-comment *ngIf="!post.isLocked" (newComments)="updateComments($event)"></app-add-comment>
-        <span *ngIf="post.isLocked">you can't add comments to this post</span>
+        <span *ngIf="post.isLocked">Comments are turned off for this post.</span>
     </div>
 
     <div class="comments mt-5" *ngIf="post.comments!.length > 0" id="comments">
