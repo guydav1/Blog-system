@@ -23,9 +23,7 @@ export class AuthService {
 
 	constructor(private http: HttpClient, private router: Router, private toastr: ToastrService) {
 		this.userObservable = this._userSubject.asObservable();
-		const _id = localStorage.getItem('userId');
-		const token = localStorage.getItem('token');
-		if (_id && token) {
+		if (this.isLoggedIn()) {
 			this.http.get<User>(environment.apiUrl + '/user/login/token').subscribe(
 				res => {
 					this._userSubject.next(res.user);
@@ -63,14 +61,12 @@ export class AuthService {
 	}
 
 	logout() {
-		if (this.isLoggedIn()) {
-			this.http.post(environment.apiUrl + '/user/logout', {}).subscribe();
-			this._userSubject.next(undefined);
-			localStorage.removeItem('userId');
-			localStorage.removeItem('token');
-			this.router.navigate(['/']);
-			this.toastr.info('Logged Out');
-		}
+		this.http.post(environment.apiUrl + '/user/logout', {}).subscribe();
+		this._userSubject.next(undefined);
+		localStorage.removeItem('userId');
+		localStorage.removeItem('token');
+		this.router.navigate(['/']);
+		this.toastr.info('Logged Out');
 	}
 
 	uploadUserAvatar(file: FormData) {
