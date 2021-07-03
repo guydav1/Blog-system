@@ -61,7 +61,9 @@ export class AuthService {
 	}
 
 	logout() {
-		this.http.post(environment.apiUrl + '/user/logout', {}).subscribe();
+		if(this.isLoggedIn()) {
+			this.http.post(environment.apiUrl + '/user/logout', {}).subscribe();
+		}
 		this._userSubject.next(undefined);
 		localStorage.removeItem('userId');
 		localStorage.removeItem('token');
