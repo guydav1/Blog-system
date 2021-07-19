@@ -7,13 +7,19 @@ async function hasUser(req, res, next) {
     if(!token) {
         return next();
     }
-    const decoded = jsonwebtoken.verify(token, process.env.JWT_STRING)
+    try {
+        const decoded = jsonwebtoken.verify(token, process.env.JWT_STRING)
+        const user = await User.findOne({ _id: decoded._id, 'tokens.token': token }); //check if token exist
+        req.token = token;
+        req.user = user; // user | undefined
+        next()
+    } catch(e) {
+        return res.sendStatus(401);
+    }
 
-    const user = await User.findOne({ _id: decoded._id, 'tokens.token': token }); //check if token exist
+    
 
-    req.token = token;
-    req.user = user; // user | undefined
-    next()
+
 }
 
 async function auth(req, res, next) {

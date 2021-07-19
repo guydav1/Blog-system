@@ -59,6 +59,20 @@ editor.ng-invalid.ng-touched {
 	border: 1px solid red;
 }
 
+/* Post Meta Data */
+.post-data {
+	color: #888;
+}
+.post-data a {
+	color: inherit;
+	text-decoration: none;
+	transition: color 300ms ease-in;
+}
+.post-data a:hover {
+	color: #111;
+}
+/* -------------- */
+
 .my-6 {
 	margin-top: 5rem !important;
 	margin-bottom: 5rem !important;

@@ -85,12 +85,18 @@
                 </div>
             </div>
             <div class="row my-2">
-                <div class="col-lg-2"><label for="isEmailPrivate">Hide Email?</label></div>
+                <div class="col-lg-2">
+                    <label for="isEmailPrivate">Hide Email?</label>
+                </div>
                 <div class="col-lg-5">
                     <div class="form-switch">
                         <input type="checkbox" name="isEmailPrivate" id="isEmailPrivate" class="form-check-input"
                             [ngModel]="user.isEmailPrivate" [value]="user.isEmailPrivate">
                     </div>
+                    <div class="form-text">
+                       Make your email address private.
+                    </div>
+
                 </div>
             </div>
 
@@ -99,7 +105,8 @@
                     <label for="password">Password:</label>
                 </div>
                 <div class="col-lg-5">
-                    <input type="password" minlength="4" name="password" id="password" class="form-control" ngModel>
+                    <input type="password" minlength="4" name="password" id="password" class="form-control" ngModel
+                        #password="ngModel">
                     <div class="form-text">
                         Must be at least 4 characters long.
                     </div>
@@ -112,7 +119,11 @@
                 </div>
                 <div class="col-lg-5">
                     <input type="password" minlength="4" name="confirmpassword" id="confirmpassword"
-                        class="form-control" ngModel>
+                        class="form-control" [pattern]="password.value" #confirmPassword="ngModel" ngModel>
+                    <div *ngIf="confirmPassword.dirty && confirmPassword.value.length > 3 && confirmPassword.value !== password.value"
+                        class="form-text text-danger">
+                        Password does not match.
+                    </div>
                 </div>
             </div>
         </div>
